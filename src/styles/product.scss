@@ -1,0 +1,10 @@
+h1 {
+    font-weight: bold;
+    color: black;
+}
+
+@media ( max-width: 768px) {
+    .items-product{
+        min-height: 25rem;
+    }
+}

@@ -1,0 +1,24 @@
+import React from 'react';
+import { useService } from '../../../hooks/useServiceProducts';
+
+const FilterProduct = ({ categorias }) => {
+
+    const { filterProductsCategorias } = useService()
+
+    return (
+      <div className='w-full flex flex-col justify-center items-center p-3'>
+        { 
+            categorias.map((categoria , index) => {
+              return(
+                <div onClick={() => filterProductsCategorias(categoria) } key={index} className='w-full flex justify-around items-center my-1 hover:text-lime-400 cursor-pointer'>
+                  <h3 className='w-1/6'> - </h3>
+                  <h3 className='w-5/6'> {categoria} </h3>
+                </div>
+              )
+            })
+        }
+      </div>
+    )
+}
+
+export default FilterProduct;

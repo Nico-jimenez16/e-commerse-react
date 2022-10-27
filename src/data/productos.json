@@ -1,0 +1,73 @@
+
+    // {
+    //     "id": null,
+    //     "title": "" ,
+    //     "image": "",
+    //     "descripcion": "",
+    //     "details" : "",
+    //     "price": 12000,
+    //     "stock": 15,
+    //     "quantity_Sold": 0,
+    //     "discount": 0,
+    //     "favorite": false,
+    //     "categoria" : ""
+    // }
+[
+    {
+        "id": 434345,
+        "title": "Auriculares in-ear inalámbricos JBL Wave 100TWS black",
+        "image": "https://http2.mlstatic.com/D_NQ_NP_875020-MLA47919581799_102021-V.webp",
+        "descripcion": "JBL, marca de renombre mundial en el mercado de audio, es desde hace más 70 años una referente por la alta calidad de sus productos. Su gama de auriculares es variada, ya que la compañía ofrece produtos in-ear, over-ear, on-ear, deportivos e inalámbricos. Cualquiera de estos es una buena opción para hacerte disfrutar de tu música preferida.",
+        "details": "Cuenta con tecnología True Wireless , La batería dura 5 h ,Asistentes de voz integrados: Google Assistant, Bixby y Siri , Con micrófono incorporado",
+        "price": 13800,
+        "stock": 2,
+        "quantity_Sold": 0,
+        "discount": 10,
+        "favorite": true,
+        "categoria": "Headphones",
+        "brand": "JBL"
+      },
+      {
+        "id": 346095,
+        "title": "Notebook HP 15-ef2126wm spruce blue 15.6', AMD Ryzen 5 5500U  8GB de RAM 256GB SSD, AMD Radeon RX Vega 7 1920x1080px Windows 10 Home",
+        "image": "https://http2.mlstatic.com/D_NQ_NP_2X_945528-MLA49251126700_032022-F.webp",
+        "descripcion": "La notebook HP 15-ef2126wm es una solución tanto para trabajar y estudiar como para entretenerte. Al ser portátil, el escritorio dejará de ser tu único espacio de uso para abrirte las puertas a otros ambientes ya sea en tu casa o en la oficina.",
+        "details": "Procesador AMD Ryzen 5. Memoria RAM de 8GB. Resolución de 1920x1080 px. Placa de video AMD Radeon RX Vega 7. Conexión wifi y bluetooth.",
+        "price": 12000,
+        "stock": 15,
+        "quantity_Sold": 0,
+        "discount": 7,
+        "favorite": true,
+        "categoria": "Notebook",
+        "brand": "HP"
+      },
+      {
+        "id": 206483,
+        "title": "Xiaomi Redmi Watch 2 Lite 1.55' caja  black, malla  black de  tpu",
+        "image": "https://http2.mlstatic.com/D_NQ_NP_942099-MLA49011470720_022022-V.webp",
+        "descripcion": "Con 10 años de trayectoria, Xiaomi se posiciona como uno de los líderes indiscutidos en el mercado de los smartwatches. Sus productos se destacan por la calidad, el diseño sencillo y muy buenas prestaciones. La Mi Band tiene todo lo necesario para acompañarte en tu rutina.",
+        "details": "Pantalla táctil LCD TFT de 1.55' , Resiste hasta 50m bajo el agua , Con GPS integrado , Sensores incluidos: acelerómetro, giroscopio, sensor óptico de frecuencia cardíaca ppg.",
+        "price": 14800,
+        "stock": 3,
+        "quantity_Sold": 0,
+        "discount": 0,
+        "favorite": true,
+        "categoria": "Smartwatch",
+        "brand": "Xiaomi"
+      },
+      {
+        "id": 967451,
+        "title": "Samsung Galaxy A32 128 GB  awesome black 4 GB RAM",
+        "image": "https://http2.mlstatic.com/D_NQ_NP_922219-MLA48428094384_122021-V.webp",
+        "descripcion": "Fotografía profesional en tu bolsillo Descubrí infinitas posibilidades para tus fotos con las 4 cámaras principales de tu equipo. Poné a prueba tu creatividad y jugá con la iluminación, diferentes planos y efectos para obtener grandes resultados.",
+        "details": "Dispositivo liberado para que elijas la compañía telefónica que prefieras , Pantalla Super AMOLED de 6.4' , Tiene 4 cámaras traseras de 64Mpx/8Mpx/5Mpx/5Mpx.",
+        "price": 74900,
+        "stock": 5,
+        "quantity_Sold": 0,
+        "discount": 18,
+        "favorite": false,
+        "categoria": "Smartphone",
+        "brand": "Samsung"
+      }
+]
+ 
