@@ -1,5 +1,5 @@
 import React , { useState } from 'react';
-import FilterProduct from '../pure/filters/FilterProduct';
+import FilterProduct from '../pure/filters/FilterCategories';
 import FilterBrands from '../pure/filters/FilterBrands';
 import { useService } from '../../hooks/useServiceProducts';
 
@@ -22,7 +22,7 @@ const IndexFilter = () => {
       setBrandVisibility(!brandVisibility)
     }
 
-    // ! estados para los filtros aplicados 
+    // ? estados para los filtros aplicados 
     // const [filterBrandApplied, setFilterBrandApplied] = useState([])
 
     // ? funciones para agregar filtros de categorias
@@ -69,11 +69,11 @@ const IndexFilter = () => {
 
         <div className='w-full flex flex-col justify-center items-center mt-4 md:mt-12'>
           <div className='w-full flex justify-center items-center h-12 bg-cyan-200 rounded-md mb-4'>
-            <h2 className='text-lg font-normal'>Filters</h2>
+            <h2 className='text-black font-bold'>Filters</h2>
           </div>
           <div onClick={viewFilterProducto} className='w-full flex justify-center items-center border-b rounded-lg p-3 cursor-pointer'>
             <div className='w-full flex justify-between items-center'>
-              <h2 className='text-base font-bold'>Filter Products component</h2>
+              <h2 className='text-md font-normal'>Filter Products component</h2>
               { arrowIcon }
             </div>
           </div>
@@ -82,7 +82,7 @@ const IndexFilter = () => {
           }
           <div onClick={viewFilterBrand} className='w-full flex justify-center items-center border-b rounded-lg p-3 cursor-pointer'>
             <div className='w-full flex justify-between items-center'>
-              <h2 className='text-base font-bold' >Filter Brands component</h2>
+              <h2 className='text-md' >Filter Brands component</h2>
               { arrowIcon }
             </div>
           </div>

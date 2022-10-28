@@ -1,21 +1,23 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { useService } from '../../hooks/useServiceProducts';
 
 // importacion de componentes 
 import ProductComponent from '../pure/Product';
 import Loader from '../pure/Loader';
 
-const IndexProductsComponent = ({ products , status }) => {
+const IndexProductsComponent = () => {
+
+  const { status , productsFiltered } = useService()
 
   return (
     <>
       
         <div className='w-full lg:pl-4 mt-12'>
-          { status &&
+          { !status &&
               <Loader/>
           }
-          { !status &&
-              products.map((product , index) => {
+          { status &&
+              productsFiltered.map((product , index) => {
                   return (
                     <ProductComponent
                       key={index}
@@ -28,12 +30,6 @@ const IndexProductsComponent = ({ products , status }) => {
         
     </>
   )
-}
-
-
-IndexProductsComponent.propTypes = {
-  products: PropTypes.array.isRequired ,
-  status: PropTypes.bool.isRequired
 }
 
 export default IndexProductsComponent;

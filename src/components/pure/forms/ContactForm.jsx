@@ -27,7 +27,7 @@ const ContactForm = () => {
 
     return (
         <>
-            <h1 className='underline'>contact me</h1>
+            <h1 className='text-xl font-bold underline'>contact me</h1>
             <Formik
                 initialValues={ initialValues }
                 validationSchema = { registerSchema }

@@ -22,10 +22,14 @@ const LoginForm = () => {
         password: ''
     }
 
+    // const sendForm = () => {
+    //     alert('Formulario enviado')
+    // }
+
     return (
         <>
             
-            <h1 className='underline'>Log in</h1>
+            <h1 className='text-xl font-bold underline'>Log in</h1>
             <Formik
                 initialValues={ initialCredentials }
                 validationSchema = { loginSchema }

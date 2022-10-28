@@ -1,29 +1,46 @@
-import React , { useState, useEffect } from 'react';
+import React , { useState , useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import Servicios from '../../data/data';
+import { useService } from '../../hooks/useServiceProducts';
+
+import Loader from '../../components/pure/Loader';
+import DetailProduct from '../../components/pure/DetailProduct';
 
 const DetailsProductPage = () => {
 
-  const { productId } = useParams() ;
+    const { productId } = useParams()
+    const { status , searchProductId }  = useService()
 
-  const [product, setProduct] = useState({})
+    const [product, setProduct] = useState([])
 
-  useEffect(() => {
-      Servicios.getProducts()
-          .then((products) => {
-            const product = products.filter((product) => {
-              return product.id === parseInt(productId)
-            })
-            setProduct(...product)
+    useEffect(() => {
+      const getProduct = () => {
+          const response = searchProductId( parseInt(productId))
+          response.map((product) => {
+            return (
+              setProduct( product )
+            )
           })
-          .catch(() => console.error())
-  }, [])
-
+      
+      }
+      getProduct()
+    
+      // eslint-disable-next-line
+    }, [status] )
 
   return (
     <>
-        <h1 className='w-full p-4 flex justify-center' > details page { productId } </h1>
-        <h1> { product.title } </h1>
+        <div className='w-full p-4 flex justify-center'>
+          <h1 className='text-lg font-bold' > Details Page - <span className='underline'> Product { productId } </span> </h1>
+        </div>
+        { product.length === 0 &&
+            
+            <Loader/>
+        }
+        { product.length !== 0 &&
+
+            <DetailProduct product={ product } />
+        }
+        
     </>
   )
 }

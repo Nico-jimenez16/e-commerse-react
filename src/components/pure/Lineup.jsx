@@ -1,4 +1,4 @@
-import React , {useState} from 'react';
+import React from 'react';
 
 const Lineup = () => {
 
@@ -21,10 +21,6 @@ const Lineup = () => {
       }
     ]
 
-    // State lineup Products 
-    const [product, setProduct] = useState(lineupProduct)
-
-
     return (
       <>
 
@@ -33,11 +29,11 @@ const Lineup = () => {
         </div>
         <div className='w-full flex flex-wrap justify-around item-center p-4 md:p-8 shadow-inner shadow-cyan-500/50 border-b'>
             {
-              product.map((lineup ,index) => {
+              lineupProduct.map((lineup ,index) => {
                 return (
                   <div id={lineup.name} key={index} className='relative w-48 h-48 m-4 hover:-translate-y-1 hover:scale-110 duration-300 shadow-xl cursor-pointer'>
                       <div className='absolute w-full p-2 bottom-0 backdrop-contrast-50 bg-white/20'>
-                        <h1 className='text-md'> {lineup.name} </h1>
+                        <h1 className='text-md font-bold'> {lineup.name} </h1>
                       </div>
                       <img className='w-full h-full object-contain' src={lineup.img} alt="lineupImages" />
                   </div>

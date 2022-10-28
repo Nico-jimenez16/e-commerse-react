@@ -1,13 +1,9 @@
 import React from 'react';
 import IndexProducts from '../../components/container/IndexProducts';
 import IndexFilter from "../../components/container/IndexFilter";
-import { useService } from '../../hooks/useServiceProducts';
-
 
 const ProductsPage = () => {
-
-  const { status , productsFiltered } = useService()
-
+  
   return (
     <>
   
@@ -16,10 +12,7 @@ const ProductsPage = () => {
           <IndexFilter/>
         </div>
         <div className='w-full lg:w-9/12'>
-          <IndexProducts
-            products={productsFiltered}
-            status={status}
-          />
+          <IndexProducts/>
         </div>
       </div>
     </>

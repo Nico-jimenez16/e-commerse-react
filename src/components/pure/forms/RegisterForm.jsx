@@ -20,10 +20,6 @@ const registerSchema = yup.object().shape(
                 then: yup.string().oneOf(
                     [yup.ref("password")] , 'password must match!')
             })
-            .required('you must confim the password'),
-        rol: yup.string()
-            .oneOf(['User' , 'Admin'] , 'you must select a rol User / Admin')
-            .required('Rol is required')
     }
 )
 
@@ -33,13 +29,16 @@ const RegisterForm = () => {
             username: '',
             email: '',
             password: '',
-            confirm: '',
-            rol: ''
+            confirm: ''
         };
+
+    // const sendForm = () => {
+    //     alert('Formulario enviado')
+    // }
 
     return (
         <>
-            <h1 className='underline'>Register</h1>
+            <h1 className='text-xl font-bold underline'>Register</h1>
             <Formik
                 initialValues={ initialValues }
                 validationSchema = { registerSchema }

@@ -25,7 +25,7 @@ const Footer = () => {
                 </div>
               </div>
               <div className="hidden md:w-1/2 h-full md:flex justify-center items-center mt-4 pb-2 md:pt-2 md:mt-0">
-                <h1 className="text-xl underline">Proyecto ReactJs</h1>
+                <h1 className="text-xl font-bold underline">Proyecto ReactJs</h1>
               </div>
             </div>
         </footer>
