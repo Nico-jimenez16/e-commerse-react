@@ -14,9 +14,6 @@ const App = () => {
     
         <Header/>
         <main className='mt-16'>
-          {/* { mobileNavigationModel &&
-            <ModelMobileNavigation/>
-          } */}
           <Outlet/>
         </main>
         <Footer/>
