@@ -71,7 +71,7 @@ const IndexFilter = () => {
           <div className='w-full flex justify-center items-center h-12 bg-cyan-200 rounded-md mb-4'>
             <h2 className='text-black font-bold'>Filters</h2>
           </div>
-          <div onClick={viewFilterProducto} className='w-full flex justify-center items-center border-b rounded-lg p-3 cursor-pointer'>
+          <div onClick={ viewFilterProducto } className='w-full flex justify-center items-center border-b rounded-lg p-3 cursor-pointer'>
             <div className='w-full flex justify-between items-center'>
               <h2 className='text-md font-normal'>Filter Products component</h2>
               { arrowIcon }
@@ -80,7 +80,7 @@ const IndexFilter = () => {
           { productVisibility &&
               <FilterProduct categorias={ categorias } />
           }
-          <div onClick={viewFilterBrand} className='w-full flex justify-center items-center border-b rounded-lg p-3 cursor-pointer'>
+          <div onClick={ viewFilterBrand } className='w-full flex justify-center items-center border-b rounded-lg p-3 cursor-pointer'>
             <div className='w-full flex justify-between items-center'>
               <h2 className='text-md' >Filter Brands component</h2>
               { arrowIcon }

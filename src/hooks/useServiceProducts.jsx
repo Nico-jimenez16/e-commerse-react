@@ -1,15 +1,20 @@
-import { useState , useEffect } from 'react'
-import Servicios from '../data/data'
+import { useState , useEffect } from 'react';
+import Servicios from '../data/data';
 
 export function useService() {
 
     const [status, setStatus] = useState(false)
+    const [filtered, setFiltered] = useState(false)
     const [products , setProducts] = useState([])
     const [productsFiltered , setProductsFiltered] = useState([])
+    console.log("🚀 ~ file: useServiceProducts.jsx ~ line 10 ~ useService ~ productsFiltered", productsFiltered)
 
-    // ! Estado para las categorias 
-    const [categorias, setCategorias] = useState([])
+    // ! Funcion para retornar los products 
+    const getProducts = () => {
+      return productsFiltered
+    }
     
+    // ! llama al servicio para obtener los datos de los productos 
     useEffect(() => {
       Servicios.getProducts()
           .then((product) => {
@@ -20,11 +25,10 @@ export function useService() {
           .catch(() => { console.error() })
 
     },[])
-    
+
     // ! Funcion para encontrar un producto con un id  
     const searchProductId = (id) => {
-      const response = products.filter((product) => product.id === id )
-      return response
+      return products.filter((product) => product.id === id )
     }
       
     
@@ -32,14 +36,12 @@ export function useService() {
     // ! FILTROS //
       ////////
 
-    // const [filterCategorie, setFilterCategorie] = useState([])
-    // const [filterBrand, setFilterBrand] = useState([])
-
     const filterProductsCategorias = (categoria) => {
-      const newFilter = products.filter((product) =>  
+      const newFilter = products.filter((product) =>
         product.categoria.toLowerCase() === categoria.toLowerCase()
-        )
+      )
       setProductsFiltered(newFilter)
+      setFiltered(true)
     }
 
     const filterProductsBrand = (brand) => {
@@ -47,14 +49,16 @@ export function useService() {
         product.brand.toLowerCase() === brand.toLowerCase()
       )
       setProductsFiltered(newFilter)
+      setFiltered(true)
     }
 
       /////////////////////////////////////////////////////
     // ! ESTADOS PARA OBTENER TODAS LAS CATEGORIAS Y LAS MARCAS //
       /////////////////////////////////////////////////////
-
+    const [categorias, setCategorias] = useState([])  
     const [brand, setBrand] = useState([]) 
 
+    // ! Filtra las categorias que existen en los profuctos 
     useEffect(() =>  {
 
       
@@ -92,11 +96,13 @@ export function useService() {
       productsFiltered,
       categorias,
       brand,
+      filtered,
       
       // ? functions 
       filterProductsCategorias,
       filterProductsBrand,
-      searchProductId
+      searchProductId,
+      getProducts
     }
 }
 

@@ -7,7 +7,7 @@ import Loader from '../pure/Loader';
 
 const IndexProductsComponent = () => {
 
-  const { status , productsFiltered } = useService()
+  const {status , productsFiltered } = useService()
 
   return (
     <>
@@ -17,10 +17,10 @@ const IndexProductsComponent = () => {
               <Loader/>
           }
           { status &&
-              productsFiltered.map((product , index) => {
+              productsFiltered.map((product) => {
                   return (
                     <ProductComponent
-                      key={index}
+                      key={product.id}
                       product={product}
                     />
                   )

@@ -2,6 +2,11 @@
   text-align: center;
   margin: 10px;
 }
+input:focus {
+  outline-style: none;
+  box-shadow: none;
+}
+
 .error{
   width: 100%;
   display: flex;
