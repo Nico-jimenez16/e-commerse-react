@@ -1,6 +1,13 @@
 import React from 'react';
+import {useNavigate} from 'react-router-dom'
 
 const Lineup = () => {
+
+    const nativage = useNavigate()
+    
+    const goProducts = () => {
+      nativage('/products')
+    }
 
     const lineupProduct = [
       {
@@ -31,7 +38,7 @@ const Lineup = () => {
             {
               lineupProduct.map((lineup ,index) => {
                 return (
-                  <div id={lineup.name} key={index} className='relative w-48 h-48 m-4 hover:-translate-y-1 hover:scale-110 duration-300 shadow-xl cursor-pointer'>
+                  <div onClick={goProducts} id={lineup.name} key={index} className='relative w-48 h-48 m-4 hover:-translate-y-1 hover:scale-110 duration-300 shadow-xl cursor-pointer'>
                       <div className='absolute w-full p-2 bottom-0 backdrop-contrast-50 bg-white/20'>
                         <h1 className='text-md font-bold'> {lineup.name} </h1>
                       </div>

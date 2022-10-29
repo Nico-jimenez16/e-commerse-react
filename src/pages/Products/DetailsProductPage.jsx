@@ -8,24 +8,19 @@ import DetailProduct from '../../components/pure/DetailProduct';
 const DetailsProductPage = () => {
 
     const { productId } = useParams()
-    const { status , searchProductId }  = useService()
+    const { searchProductId , status }  = useService()
 
     const [product, setProduct] = useState([])
-
-    useEffect(() => {
-      const getProduct = () => {
-          const response = searchProductId( parseInt(productId))
-          response.map((product) => {
-            return (
-              setProduct( product )
-            )
-          })
-      
-      }
-      getProduct()
     
-      // eslint-disable-next-line
+    useEffect(() => {
+      
+      const response  = searchProductId( parseInt(productId) )
+      response.map((product) => { return setProduct(product) } )
+
+
     }, [status] )
+
+    
 
   return (
     <>

@@ -6,13 +6,11 @@ export function useService() {
     const [status, setStatus] = useState(false)
     const [products , setProducts] = useState([])
     const [productsFiltered , setProductsFiltered] = useState([])
-    console.log("🚀 ~ file: useServiceProducts.jsx ~ line 9 ~ useService ~ productsFiltered", productsFiltered)
 
     // ! Estado para las categorias 
     const [categorias, setCategorias] = useState([])
     
     useEffect(() => {
-
       Servicios.getProducts()
           .then((product) => {
             setProducts(product)
@@ -25,10 +23,11 @@ export function useService() {
     
     // ! Funcion para encontrar un producto con un id  
     const searchProductId = (id) => {
-      const result = products.filter((product) => product.id === id )
-      return result
+      const response = products.filter((product) => product.id === id )
+      return response
     }
       
+    
       //////////
     // ! FILTROS //
       ////////
