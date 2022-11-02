@@ -1,7 +1,24 @@
-import React from 'react';
+import React , { useContext } from 'react';
 import PropTypes from 'prop-types';
 
-const DetailProduct = ( { product } ) => {
+// ? impotando cardContext
+import CardContext from '../../context/CardContext' 
+
+const DetailProduct = ( { product , goBack } ) => {
+
+    const { count , setCount , addCard } = useContext(CardContext);
+
+    const sumar = () => {
+        setCount( count + 1 )
+    }
+    const restar = () => {
+        setCount( count - 1 )
+    }
+
+    const add = async (product) => {
+        await addCard(product)
+        goBack(-1)
+    }
 
     return (
         <>
@@ -17,7 +34,7 @@ const DetailProduct = ( { product } ) => {
                         <h1 className='text-xl md:text-2xl font-bold' > { product.title } </h1>
                     </div>
                     <div className='w-full flex justify-center items-center py-2'>
-                        <h3 className='text-lg' > { product.details }. </h3>
+                        <h3 className='text-lg' > { product.details } </h3>
                     </div>
                     { product.discount !== 0
                         ?
@@ -40,19 +57,19 @@ const DetailProduct = ( { product } ) => {
                     }
                     <div className="w-full flex justify-center items-center mt-8">
                         <div className="w-1/2 md:w-1/3 flex justify-center items-center text-black font-bold p-2" >
-                            <button className="w-1/3 mr-2 border-[#2c3e50] rounded-xl border-2 p-2 hover:bg-cyan-200 hover:text-black">-</button>
-                            <input disabled className="w-1/3 p-2 border-[#2c3e50] rounded-xl border-2" min="1" type="number" />
-                            <button className="w-1/3 ml-2 border-[#2c3e50] rounded-xl border-2 p-2 hover:bg-cyan-200 hover:text-black">+</button>
-                        </div>
+                            <button onClick={ restar } className="w-1/3 mr-2 border-[#2c3e50] rounded-xl border-2 p-2 hover:bg-cyan-200 hover:text-black">-</button>
+                            <input disabled className="w-1/3 p-2 border-[#2c3e50] rounded-xl border-2" min="1" type="number" value={ count } />
+                            <button onClick={ sumar } className="w-1/3 ml-2 border-[#2c3e50] rounded-xl border-2 p-2 hover:bg-cyan-200 hover:text-black">+</button>
+                        </div> 
                         <div className="w-1/2 md:w-2/3 flex justify-center items-center">
-                            <button className="w-full lg:w-2/3 p-2 bg-cyan-200 rounded-xl text-black font-bold">Add a cart</button>
+                            <button onClick={ () => add( product ) } className="w-full lg:w-2/3 p-2 bg-cyan-200 rounded-xl text-black font-bold">Add a cart</button>
                         </div>
                     </div>
                 </div>
             </div>
             {/* Product Description  */}
             <div className='w-full flex justify-center mt-8'>
-                <div className='w-5/6 flex flex-col justify-center items-center'>
+                <div className='w-full p-2 md:w-5/6 md:p-0 flex flex-col justify-center items-center'>
                 <h2 className='w-full flex underline mb-2'> Description </h2>
                 <div>
                     <h2> { product.descripcion } </h2>

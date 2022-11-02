@@ -1,12 +1,20 @@
 import React , { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link , useNavigate } from 'react-router-dom';
 
 const Header = () => {
+  
+  const navigate = useNavigate()
+  const [status, setStatus] = useState(false)
+  // console.log(setStatus)  
 
   const [modalView, setModalView] = useState(false)
 
-  const changeView = () =>{
+  const viewModalMobile = () => {
     setModalView(!modalView)
+  }
+
+  const goCart = () => {
+    navigate('/cart')
   }
   
   return (
@@ -17,32 +25,59 @@ const Header = () => {
               <Link className='p-4 text-gray-400' to='/products' > Products </Link>
             </div>
             <div className='w-full h-full flex justify-end items-center'>
-              <Link className='p-4 text-gray-400' to='/login' > Login </Link>
-              <Link className='p-4 text-gray-400' to='/register' > Register </Link>
+              { status &&
+                <div className='w-auto h-full flex justify-center items-center'>
+                  <div className='w-auto h-10 flex justify-center items-center border-b border-cyan-500 rounded-lg px-2'>
+                    <img className='h-8' src="https://cdn-icons-png.flaticon.com/512/4526/4526817.png" alt="" />
+                    <h2 className='pl-2 text-black font-bold'> nicolas </h2>
+                  </div>
+                </div>
+              }
+              { !status &&
+                <>
+                  <Link className='p-4 text-gray-400' to='/login' > Login </Link>
+                  <Link className='p-4 text-gray-400' to='/register' > Register </Link>
+                </>
+              }
               <Link className='p-4 text-cyan-700' to='/cart' > view cart </Link>
             </div>
         </nav>
         <nav id='mobile' className='fixed z-50 w-full flex md:hidden justify-start items-center h-16 border-b bg-white top-0'>
-            <div className='w-1/4 md:w-full h-full flex justify-center items-center p-4'>
-              <button onClick={changeView} className="w-16 p-2 flex justify-center items-center bg-cyan-500 rounded-sm">
-                <span className="w-1/2 h-full flex justify-center items-center">
-                  <svg fill='#fff' viewBox="0 0 512 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em">
+            <div className='w-1/4 md:w-full h-full flex justify-center items-center px-5 py-3'>
+              <button onClick={ viewModalMobile } className="w-20 h-full flex justify-center items-center bg-cyan-500 rounded-md">
+                <span className="w-2/3 h-full flex justify-center items-center">
+                  <svg fill='#fff' viewBox="0 0 512 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="2em" height="2em">
                     <path d="M0 96c0-13.255 10.745-24 24-24h464c13.255 0 24 10.745 24 24s-10.745 24-24 24H24c-13.255 0-24-10.745-24-24zm0 160c0-13.255 10.745-24 24-24h464c13.255 0 24 10.745 24 24s-10.745 24-24 24H24c-13.255 0-24-10.745-24-24zm0 160c0-13.255 10.745-24 24-24h464c13.255 0 24 10.745 24 24s-10.745 24-24 24H24c-13.255 0-24-10.745-24-24z"></path>
                   </svg>
                 </span>
               </button>
             </div>
             <div className='w-3/4 md:w-full h-full flex justify-end items-center'>
-              <Link className='p-2 md:p-4 text-gray-400' to='/login' > Login </Link>
-              <Link className='p-2 md:p-4 text-gray-400' to='/register' > Register </Link>
-              <Link className='p-2 md:p-4 text-cyan-700' to='/cart' > view cart </Link>
+            <div onClick={ goCart } className='w-auto h-16 flex justify-center items-center mr-4'>
+              <img className='h-8' src="https://cdn-icons-png.flaticon.com/512/4202/4202388.png" alt="bag"/>
+            </div>
+            { status &&
+                <div className='w-auto h-full flex justify-center items-center mr-2'>
+                  <div className='w-auto h-10 flex justify-center items-center border-b border-cyan-500 rounded-lg px-2'>
+                    <img className='h-8' src="https://cdn-icons-png.flaticon.com/512/4526/4526817.png" alt="" />
+                    <h2 className='pl-2 text-black font-bold'> nicolas </h2>
+                  </div>
+                </div>
+
+              }
+              { !status &&
+                <>
+                  <Link className='p-2 md:p-4 text-gray-400' to='/login' > Login </Link>
+                  <Link className='p-2 md:p-4 text-gray-400' to='/register' > Register </Link>
+                </>
+              }
             </div>
         </nav>
         { modalView &&
           <div id='modal-mobile' className='w-full flex justify-center items-center md:hidden fixed z-50'>
-            <div className='w-3/4 h-48 flex flex-col bg-white'>
-              <Link onClick={changeView} className='w-full h-10 flex justify-center items-center text-gray-400 border-b' to='/' > Home </Link>
-              <Link onClick={changeView} className='w-full h-10 flex justify-center items-center text-gray-400 border-b' to='/products' > Products </Link>
+            <div className='w-3/4 h-48 flex flex-col bg-white border-x-2 border-b-2 border-cyan-500'>
+              <Link onClick={ viewModalMobile } className='w-full h-10 flex justify-center items-center text-gray-400 border-b' to='/' > Home </Link>
+              <Link onClick={ viewModalMobile } className='w-full h-10 flex justify-center items-center text-gray-400 border-b' to='/products' > Products </Link>
               <div className="w-full h-10 flex justify-center items-center mt-1 mr-1">
                   <img className="w-6 mr-2 cursor-pointer" src="https://cdn-icons-png.flaticon.com/512/5968/5968534.png" alt="mail" />
                   <img className="w-6 mr-2 cursor-pointer" src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="linkedin" />

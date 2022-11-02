@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import '../../styles/product.css'
+import '../../styles/product.css';
 
 const ProductComponent = ( { product } ) => {
 
@@ -20,7 +20,7 @@ const ProductComponent = ( { product } ) => {
             </div>
             { product.discount > 0 &&
               <div className='w-3/4 md:w-2/3 lg:w-2/4 xl:w-2/5 flex border rounded-lg pl-2 bg-cyan-200'>
-                <h4 className='text-cyan-700'> {product.discount}% OFF con Mercado Credito </h4>
+                <h4 className='text-cyan-700'> {product.discount}% OFF con Tarjetas Asociadas </h4>
               </div>
             }
             { product.favorite &&

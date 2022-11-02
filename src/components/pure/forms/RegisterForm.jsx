@@ -2,6 +2,10 @@ import React from 'react';
 import { Formik , Form , Field , ErrorMessage } from 'formik';
 import * as yup from 'yup';
 
+// ! importando los sevicios HTTP 
+// import Servicios from '../../../data/data.js'
+
+
 const registerSchema = yup.object().shape(
     {
         username: yup.string()
@@ -13,13 +17,8 @@ const registerSchema = yup.object().shape(
             .required('Email is required'),
         password: yup.string()
             .required('Password is required')
-            .min(8 , 'password too short'),
-        confirm: yup.string()
-            .when("password" , {
-                is: value => ( value && value.length > 0 ? true : false ),
-                then: yup.string().oneOf(
-                    [yup.ref("password")] , 'password must match!')
-            })
+            .min(8 , 'password too short')
+            .max(12 , 'Username too long')
     }
 )
 
@@ -28,13 +27,13 @@ const RegisterForm = () => {
     const initialValues = {
             username: '',
             email: '',
-            password: '',
-            confirm: ''
+            password: ''
         };
 
-    // const sendForm = () => {
-    //     alert('Formulario enviado')
-    // }
+    const registerUser = (user) => {
+        console.log('estoy por registerForm - registerUser' , user)
+        // Servicios.registerUser(user)
+    }
 
     return (
         <>
@@ -42,10 +41,7 @@ const RegisterForm = () => {
             <Formik
                 initialValues={ initialValues }
                 validationSchema = { registerSchema }
-                onSubmit={async (values) => {
-                    await new Promise((r) => setTimeout(r, 1000));
-                    alert(JSON.stringify(values, null, 2));
-                }}
+                onSubmit={async (values) => { registerUser(values) }}
             >
             {
                 ({ errors, touched , isSubmitting }) => (
@@ -78,16 +74,6 @@ const RegisterForm = () => {
                             (
                                 <span className='error'>
                                     <ErrorMessage name="password" />
-                                </span>
-                            )
-                        }
-                        <Field className='p-4 border-b rounded-xl mb-2' id="confirm" type='password' name="confirm" placeholder="password confirmation" />
-                        {
-                            // consfirm password errors 
-                            errors.confirm && touched.confirm && 
-                            (
-                                <span className='error'>
-                                    <ErrorMessage name="confirm" />
                                 </span>
                             )
                         }

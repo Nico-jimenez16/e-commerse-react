@@ -1,19 +1,21 @@
-import { useState , useEffect } from 'react'
-import Servicios from '../data/data'
+import { useEffect , useContext } from 'react';
+import Servicios from '../data/data';
+
+// ? importando context
+import contextUser from '../context/UserContext.js';
 
 export function useServiceUser() {
 
-    const [status, setStatus] = useState(false)
-    const [users , setUsers] = useState([])
-    const [loggedUser, setLoggedUser] = useState({})
+    const { status , setStatus , users , setUsers , loggedUser , setLoggedUser } = useContext(contextUser)
     
     useEffect(() => {
-        Servicios.getUsers()
+        Servicios.loginUser()
             .then((user) => {
                 setUsers(user)
+                setStatus(true)
             })
             .catch(() => { console.error() })
-    },[])
+    },[setStatus , setUsers])
 
     const logged = (user) => {
         setLoggedUser(user)

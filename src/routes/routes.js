@@ -15,20 +15,19 @@ import NotFoundPage from '../pages/404/NotFoundPage';
 const RoutesComponent = () => {
   return (
     <>
-        <Router>
-            <Routes>
-                <Route path='/' element={ <App /> }>
-                    <Route index path='/' element={ <HomePage/> } />
-                    <Route path='products' element={ <ProductsPage/> } />
-                    {/* <Route path='products/:categoria/:brand' element={ <ProductsPage/> } /> */}
-                    <Route path='products/:productId' element={ <DetailsProductPage/>} />
-                    <Route path='login' element={ <LoginPage/> } />
-                    <Route path='register' element={ <RegisterPage/> } />
-                    <Route path='cart' element={ <CartPage/> } />
-                    <Route path="*" element={ <NotFoundPage/> } />
-                </Route>
-            </Routes>
-        </Router>
+          <Router>
+              <Routes>
+                  <Route path='/' element={ <App /> }>
+                      <Route index path='/' element={ <HomePage/> } />
+                      <Route path='products' element={ <ProductsPage/> } />
+                      <Route path='products/:productId' element={ <DetailsProductPage/>} />
+                      <Route path='login' element={ <LoginPage/> } />
+                      <Route path='register' element={ <RegisterPage/> } />
+                      <Route path='cart' element={ <CartPage/> } />
+                      <Route path="*" element={ <NotFoundPage/> } />
+                  </Route>
+              </Routes>
+          </Router>
     </>
   )
 }

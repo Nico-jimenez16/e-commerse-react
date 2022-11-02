@@ -1,16 +1,21 @@
 import React , { useState , useEffect } from 'react';
 import { useParams , useNavigate } from 'react-router-dom';
-import { useService } from '../../hooks/useServiceProducts';
+import { useServiceProducts } from '../../hooks/useServiceProducts';
 
+// ? importando componentes puros 
 import Loader from '../../components/pure/Loader';
 import DetailProduct from '../../components/pure/DetailProduct';
+
 
 const DetailsProductPage = () => {
 
     const { productId } = useParams()
     const navigate = useNavigate()
-    const { searchProductId , status }  = useService()
 
+    // ? funcion del custom hook que busca el producto == productId 
+    const { searchProductId }  = useServiceProducts()
+
+    // ? Producto con id 
     const [product, setProduct] = useState([])
     
     useEffect(() => {
@@ -18,26 +23,26 @@ const DetailsProductPage = () => {
       const response  = searchProductId( parseInt(productId) )
       response.map((product) => { return setProduct(product) } )
 
-    // eslint-disable-next-line
-    }, [status] )
+    }, [productId , searchProductId])
 
-    const goBack = () => {
-      navigate(-1)
+    const goBack = (go) => {
+      navigate(go)
     }
 
   return (
     <>
-        <div className='relative w-full p-4 flex justify-center'>
-          <p className='absolute left-0 ml-4 cursor-pointer text-cyan-600' onClick={goBack} > { '<<< back to products' } </p>
+        <p className='left-0 ml-4 mt-2 cursor-pointer text-cyan-600' onClick={() => goBack(-1) } > { '<<< back to products' } </p>
+        <div className='w-full px-4 py-2 flex justify-center'>
           <h1 className='text-lg font-bold' > Details Page - <span className='underline'> Product { productId } </span> </h1>
         </div>
         { product.length === 0 &&
-            
             <Loader/>
         }
         { product.length !== 0 &&
-
-            <DetailProduct product={ product } />
+            <DetailProduct 
+              product={ product }
+              goBack={goBack} 
+            />
         }
         
     </>

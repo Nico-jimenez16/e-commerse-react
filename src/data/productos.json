@@ -1,18 +1,17 @@
-
-    // {
-    //     "id": null,
-    //     "title": "" ,
-    //     "image": "",
-    //     "descripcion": "",
-    //     "details" : "",
-    //     "price": 12000,
-    //     "stock": 15,
-    //     "quantity_Sold": 0,
-    //     "discount": 0,
-    //     "favorite": false,
-    //     "categoria" : ""
-    // }
 [
+    {
+        "id": null,
+        "title": "" ,
+        "image": "",
+        "descripcion": "",
+        "details" : "",
+        "price": 0,
+        "stock": 0,
+        "quantity_Sold": 0,
+        "discount": 0,
+        "favorite": false,
+        "categoria" : ""
+    },
     {
         "id": 434345,
         "title": "Auriculares in-ear inalámbricos JBL Wave 100TWS black",
@@ -28,7 +27,7 @@
         "brand": "JBL"
       },
       {
-        "id": 346095,
+        "id": 198095,
         "title": "Notebook HP 15-ef2126wm spruce blue 15.6', AMD Ryzen 5 5500U  8GB de RAM 256GB SSD, AMD Radeon RX Vega 7 1920x1080px Windows 10 Home",
         "image": "https://http2.mlstatic.com/D_NQ_NP_2X_945528-MLA49251126700_032022-F.webp",
         "descripcion": "La notebook HP 15-ef2126wm es una solución tanto para trabajar y estudiar como para entretenerte. Al ser portátil, el escritorio dejará de ser tu único espacio de uso para abrirte las puertas a otros ambientes ya sea en tu casa o en la oficina.",
@@ -39,7 +38,7 @@
         "discount": 7,
         "favorite": true,
         "categoria": "Notebook",
-        "brand": "HP"
+        "brand": "Lenovo"
       },
       {
         "id": 206483,

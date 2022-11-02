@@ -27,6 +27,32 @@ export default {
     } catch (error) {
         console.error(error)
     }
-  }
+  },
 
+  // ! Loguar un usuario
+  
+  async loginUser( User ) {
+
+    const response = await axios.post('https://randomuser.me/api' , User)
+    const data = response.data.results[0]
+    return data
+
+    // const email = response.data.results[0].email
+    // const password = response.data.results[0].login.password
+
+    // const User = {
+    //   email ,
+    //   password
+    // }
+    // return User;
+  },
+
+   // ! registrar un usuario a la API
+   async registerUser( User ){
+      try {
+        await axios.post( ApiUser, User )
+      } catch (error) {
+          console.error(error)
+      }
+  }
 }

@@ -60,7 +60,7 @@ const ContactForm = () => {
                                 </span>
                             )
                         }
-                        <Field className='p-4 border-b rounded-xl mb-2' id="message" type='password' name="message" placeholder="message" />
+                        <Field as="textarea" className='p-4 border-b h-32 rounded-xl mb-2' id="message" type='text' name="message" placeholder="message" />
                         {
                             // password errors 
                             errors.message && touched.message && 

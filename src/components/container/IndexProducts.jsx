@@ -1,13 +1,15 @@
-import React from 'react';
-import { useService } from '../../hooks/useServiceProducts';
+import React , { useContext } from 'react';
 
 // importacion de componentes 
 import ProductComponent from '../pure/Product';
 import Loader from '../pure/Loader';
 
+// ? Usamos el context
+import contextProducts from '../../context/ProductsContext' 
+
 const IndexProductsComponent = () => {
 
-  const {status , productsFiltered } = useService()
+  const {status , productsFiltered } = useContext(contextProducts)
 
   return (
     <>

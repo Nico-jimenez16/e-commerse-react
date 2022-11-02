@@ -1,16 +1,17 @@
 import React from 'react';
 
 const Footer = () => {
+  
   return (
     <>
-        <footer className='w-full flex justify-center items-center h-auto md:h-16 my-4 border-t'>
+        <footer className='w-full flex justify-center items-center h-auto md:h-16 mt-4 border-t'>
             <div className="w-full h-full block flex justify-center md:justify-start items-center items-center pt-2">
               <div className="w-full md:w-1/2 flex justify-center items-center">
                 <div className="flex justify-start items-center mt-1 mr-1 cursor-pointer">
                   <img className="w-6 mr-2" src="https://cdn-icons-png.flaticon.com/512/5968/5968534.png" alt="mail" />
                 </div>
                 <div className="flex justify-start items-center mt-1 mr-1 cursor-pointer">
-                  <img className="w-6 mr-2" src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="" />
+                  <img className="w-6 mr-2" src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="Ln" />
                 </div>
                 <div className="flex justify-start items-center mt-1 mr-1">
                   <div className="w-6 mr-2 cursor-pointer">

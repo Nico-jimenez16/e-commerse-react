@@ -1,20 +1,15 @@
-import { useState , useEffect } from 'react';
+import { useState , useEffect , useContext } from 'react';
 import Servicios from '../data/data';
 
-export function useService() {
+// ? importando contexto 
+import contextProducts from '../context/ProductsContext';
 
-    const [status, setStatus] = useState(false)
-    const [filtered, setFiltered] = useState(false)
-    const [products , setProducts] = useState([])
-    const [productsFiltered , setProductsFiltered] = useState([])
-    console.log("🚀 ~ file: useServiceProducts.jsx ~ line 10 ~ useService ~ productsFiltered", productsFiltered)
+export function useServiceProducts() {
 
-    // ! Funcion para retornar los products 
-    const getProducts = () => {
-      return productsFiltered
-    }
+    const { status , setStatus , products , setProducts , productsFiltered , setProductsFiltered } = useContext(contextProducts)
+
     
-    // ! llama al servicio para obtener los datos de los productos 
+    // ! llama al servicio para obtener los datos de los productos
     useEffect(() => {
       Servicios.getProducts()
           .then((product) => {
@@ -23,45 +18,65 @@ export function useService() {
             setStatus(true)
           })
           .catch(() => { console.error() })
+    },[setStatus, setProducts, setProductsFiltered])
+    
 
-    },[])
-
-    // ! Funcion para encontrar un producto con un id  
+    // ! Funcion para encontrar un producto con un id especifico -DetailPage
+    
     const searchProductId = (id) => {
       return products.filter((product) => product.id === id )
     }
       
-    
       //////////
     // ! FILTROS //
       ////////
 
+    // ? estados para los filtros aplicados 
+    const [indexCategorieApplied, setFiltercategorieApplied] = useState(null)
+    const [indexBrandApplied, setFilterBrandApplied] = useState(null)
+
     const filterProductsCategorias = (categoria) => {
-      const newFilter = products.filter((product) =>
-        product.categoria.toLowerCase() === categoria.toLowerCase()
-      )
-      setProductsFiltered(newFilter)
-      setFiltered(true)
+      const index = categorias.indexOf(categoria)
+      if( index === indexCategorieApplied ){
+        setProductsFiltered(products)
+        setFiltercategorieApplied(null)
+        setFilterBrandApplied(null)
+      } 
+      else {
+        const newFilter = products.filter((product) =>
+          product.categoria.toLowerCase() === categoria.toLowerCase()
+        )
+          setProductsFiltered(newFilter)
+          setFiltercategorieApplied(index)
+          setFilterBrandApplied(null)
+      }
     }
 
     const filterProductsBrand = (brand) => {
-      const newFilter = products.filter((product) =>  
-        product.brand.toLowerCase() === brand.toLowerCase()
-      )
-      setProductsFiltered(newFilter)
-      setFiltered(true)
+      const index = brand.indexOf(brand)
+      if( index === indexBrandApplied ){
+        setProductsFiltered(products)
+        setFiltercategorieApplied([])
+        setFilterBrandApplied([])
+      }else {
+        const newFilter = productsFiltered.filter((product) =>
+          product.brand.toLowerCase() === brand.toLowerCase()
+        )
+        setProductsFiltered(newFilter)
+        setFilterBrandApplied(index)
+      }
     }
 
       /////////////////////////////////////////////////////
     // ! ESTADOS PARA OBTENER TODAS LAS CATEGORIAS Y LAS MARCAS //
       /////////////////////////////////////////////////////
-    const [categorias, setCategorias] = useState([])  
-    const [brand, setBrand] = useState([]) 
+    
+    const [categorias, setCategorias] = useState([])
+    const [brand, setBrand] = useState([])
 
-    // ! Filtra las categorias que existen en los profuctos 
+    // ! Filtra las categorias que existen en los profuctos
     useEffect(() =>  {
 
-      
       const getCategories = () => {
         const categories = products.map((product) => {
           return (
@@ -83,10 +98,10 @@ export function useService() {
         let result = [...uniques];
         setBrand(result)
       }
-      
+
       getCategories()
       getBrand()
-
+    
     } , [products, productsFiltered])
 
 
@@ -96,13 +111,13 @@ export function useService() {
       productsFiltered,
       categorias,
       brand,
-      filtered,
+      indexCategorieApplied,
+      indexBrandApplied,
       
       // ? functions 
       filterProductsCategorias,
       filterProductsBrand,
-      searchProductId,
-      getProducts
+      searchProductId
     }
 }
 

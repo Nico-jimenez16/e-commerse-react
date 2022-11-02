@@ -1,6 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import { Formik , Form , Field , ErrorMessage } from 'formik';
 import * as yup from 'yup';
+
+// ! importando los sevicios HTTP 
+// import Servicios from '../../../data/data.js'
 
 
 const loginSchema = yup.object().shape(
@@ -10,7 +14,7 @@ const loginSchema = yup.object().shape(
             .required('Email is required'),
         password: yup.string()
             .required('Password is required')
-            .min(10 , 'minimum length of 10 characters')
+            // .min(10 , 'minimum length of 10 characters')
     }
 )
 
@@ -22,9 +26,10 @@ const LoginForm = () => {
         password: ''
     }
 
-    // const sendForm = () => {
-    //     alert('Formulario enviado')
-    // }
+    const userLogin = async (User) => {
+        console.log('estoy por loginForm - userLogin' , User);
+        // await Servicios.loginUser( User )
+    }
 
     return (
         <>
@@ -33,11 +38,7 @@ const LoginForm = () => {
             <Formik
                 initialValues={ initialCredentials }
                 validationSchema = { loginSchema }
-                onSubmit={async (values) => {
-                    await new Promise((r) => setTimeout(r, 1000));
-                    alert(JSON.stringify(values, null, 2));
-                    localStorage.setItem('credentials', values);
-                }}
+                onSubmit={(values) => { userLogin( values ) }}
             >
             {
                 ({ errors, touched , isSubmitting }) => ( 
@@ -65,6 +66,7 @@ const LoginForm = () => {
                         }
                         <button className='mt-4 p-1 bg-[#54b4d3] text-white hover:shadow-lg rounded-lg' type="submit"> Login </button>
                         { isSubmitting ? ( <p>Login yur credentials</p> ) : null}
+                        <Link to={'/register'} className='w-full flex justify-end items-center text-gray-400 mt-4 cursor-pointer' >create an account</Link>
                     </Form>
                 )
             }

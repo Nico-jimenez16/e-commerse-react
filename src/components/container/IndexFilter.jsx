@@ -1,14 +1,16 @@
 import React , { useState } from 'react';
 import FilterProduct from '../pure/filters/FilterCategories';
 import FilterBrands from '../pure/filters/FilterBrands';
-import { useService } from '../../hooks/useServiceProducts';
+
+// ? importando custom Hook de servicios 
+import { useServiceProducts } from '../../hooks/useServiceProducts';
+
 
 const IndexFilter = () => {
 
-    const { categorias , brand } = useService()
-    
+    const { categorias , brand , filterProductsCategorias , filterProductsBrand , indexCategorieApplied, indexBrandApplied } = useServiceProducts()
 
-    // ! estados para la visibilidad de las opciones del filtro
+    // ? estados para la visibilidad de las opciones del filtro
     const [productVisibility, setProductVisibility] = useState(false)
     const [brandVisibility, setBrandVisibility] = useState(false)
 
@@ -22,40 +24,7 @@ const IndexFilter = () => {
       setBrandVisibility(!brandVisibility)
     }
 
-    // ? estados para los filtros aplicados 
-    // const [filterBrandApplied, setFilterBrandApplied] = useState([])
-
-    // ? funciones para agregar filtros de categorias
-    // const addFilterCategoria = (productName) => {
-    //   const index = filterProductApplied.indexOf(productName)
-    //   const findProduct = filterProductApplied.filter((product) => product === productName)
-    //   const applied = [...filterProductApplied]
-      
-    //   if(findProduct.length === 0){
-    //     applied.push(productName)
-    //     setFilterProductApplied(applied)
-    //   }else {
-    //     applied.splice(index , 1)
-    //     setFilterProductApplied(applied)
-    //   }
-    // }
-
-    // const addFilterBrand = (brandName) => {
-    //   const index = filterBrandApplied.indexOf(brandName)
-    //   const findBrand = filterBrandApplied.filter((brand) => brand === brandName)
-    //   const applied = [...filterBrandApplied]
-
-    //   if(findBrand.length === 0){
-    //     applied.push(brandName)
-    //     setFilterBrandApplied(applied)
-    //   }else {
-    //     applied.splice(index , 1)
-    //     setFilterBrandApplied(applied)
-    //   }
-    // }
-
-
-    // icono de la flechita para abajo 
+    // icono de la flechita para abajo
     const arrowIcon = (
       <span className="flex justify-center items-center pl-2 font-bold">
         <svg aria-label="Icono de comilla angular hacia abajo" color="#262626" fill="#262626" height="12" role="img" viewBox="0 0 24 24" width="12" className="_ab6-">
@@ -78,7 +47,11 @@ const IndexFilter = () => {
             </div>
           </div>
           { productVisibility &&
-              <FilterProduct categorias={ categorias } />
+              <FilterProduct 
+                  categorias={ categorias } 
+                  filterProductsCategorias={filterProductsCategorias}
+                  indexCategorieApplied={indexCategorieApplied}
+              />
           }
           <div onClick={ viewFilterBrand } className='w-full flex justify-center items-center border-b rounded-lg p-3 cursor-pointer'>
             <div className='w-full flex justify-between items-center'>
@@ -87,7 +60,11 @@ const IndexFilter = () => {
             </div>
           </div>
           { brandVisibility &&
-              <FilterBrands brand={ brand } />
+              <FilterBrands 
+                  brand={ brand } 
+                  filterProductsBrand={filterProductsBrand}
+                  indexBrandApplied={indexBrandApplied}
+              />
           }
         </div>
         
