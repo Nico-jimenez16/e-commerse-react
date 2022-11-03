@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <>
         <footer className='w-full flex justify-center items-center h-auto md:h-16 mt-4 border-t'>
-            <div className="w-full h-full block flex justify-center md:justify-start items-center items-center pt-2">
+            <div className="w-full h-full block flex justify-center md:justify-start items-center items-center py-4">
               <div className="w-full md:w-1/2 flex justify-center items-center">
                 <div className="flex justify-start items-center mt-1 mr-1 cursor-pointer">
                   <img className="w-6 mr-2" src="https://cdn-icons-png.flaticon.com/512/5968/5968534.png" alt="mail" />

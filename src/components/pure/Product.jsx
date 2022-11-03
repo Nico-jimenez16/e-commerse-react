@@ -9,12 +9,12 @@ const ProductComponent = ( { product } ) => {
   return (
     <>
         
-        <Link to={`/products/${product.id}`} className='w-full block md:flex justify-center items-center rounded-xl border-y p-4 shadow-xl mb-4 items-product'>
-          <div className='w-full md:w-1/3 h-56'>
+        <Link to={`/products/${product.id}`} className='w-full h-56 block md:flex justify-center items-center rounded-xl border-y p-4 shadow-xl mb-4 items-product'>
+          <div className='w-full md:w-1/3 h-56 md:h-full'>
             <img className='w-fit h-full m-auto object-contain' src={product.image} alt="" />
           </div>
-          <div className='w-full md:w-2/3 h-auto md:h-56'>
-            <h1 className='text-md md:text-xl text-black font-bold whitespace-nowrap overflow-hidden text-ellipsis' > {product.title} </h1>
+          <div className='w-full md:w-2/3 h-auto'>
+            <h1 className='text-md md:text-xl text-black font-bold whitespace-nowrap overflow-hidden text-ellipsis p-2'> {product.title} </h1>
             <div className='flex my-2'>
               <h2 className='text-2xl'>$ {product.price} </h2>
             </div>

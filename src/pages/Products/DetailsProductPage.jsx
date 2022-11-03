@@ -31,7 +31,7 @@ const DetailsProductPage = () => {
 
   return (
     <>
-        <p className='left-0 ml-4 mt-2 cursor-pointer text-cyan-600' onClick={() => goBack(-1) } > { '<<< back to products' } </p>
+        <p className='left-0 ml-4 mt-2 cursor-pointer text-cyan-600' onClick={() => goBack(-1) } > { '<< Back' } </p>
         <div className='w-full px-4 py-2 flex justify-center'>
           <h1 className='text-lg font-bold' > Details Page - <span className='underline'> Product { productId } </span> </h1>
         </div>
