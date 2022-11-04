@@ -1,9 +1,6 @@
 import React from 'react';
-// import { useService } from '../../../hooks/useServiceProducts';
 
-const FilterBrands = ({ brand , filterProductsBrand , indexBrandApplied }) => {
-
-  // const { filterProductsBrand } = useService()
+const FilterBrandsComponent = ({ brand , filterProductsBrand , indexBrandApplied }) => {
 
   return (
     <div className='w-full flex flex-col justify-center items-center p-3'>
@@ -26,4 +23,4 @@ const FilterBrands = ({ brand , filterProductsBrand , indexBrandApplied }) => {
   )
 }
 
-export default FilterBrands;
+export default FilterBrandsComponent;

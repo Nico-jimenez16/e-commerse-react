@@ -18,7 +18,7 @@ const loginSchema = yup.object().shape(
     }
 )
 
-const LoginForm = () => {
+const LoginFormComponent = () => {
 
 
     const initialCredentials = {
@@ -76,4 +76,4 @@ const LoginForm = () => {
     )
 }
 
-export default LoginForm;
+export default LoginFormComponent;

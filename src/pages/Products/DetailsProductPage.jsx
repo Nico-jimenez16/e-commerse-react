@@ -12,8 +12,8 @@ const DetailsProductPage = () => {
     const { productId } = useParams()
     const navigate = useNavigate()
 
-    // ? funcion del custom hook que busca el producto == productId 
-    const { searchProductId }  = useServiceProducts()
+    // ? funcion del custom hook que busca el producto === productId
+    const { status , searchProductId }  = useServiceProducts()
 
     // ? Producto con id 
     const [product, setProduct] = useState([])
@@ -35,10 +35,10 @@ const DetailsProductPage = () => {
         <div className='w-full px-4 py-2 flex justify-center'>
           <h1 className='text-lg font-bold' > Details Page - <span className='underline'> Product { productId } </span> </h1>
         </div>
-        { product.length === 0 &&
+        { !status &&
             <Loader/>
         }
-        { product.length !== 0 &&
+        { status &&
             <DetailProduct 
               product={ product }
               goBack={goBack} 

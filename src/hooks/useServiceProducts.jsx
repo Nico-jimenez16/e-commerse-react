@@ -26,6 +26,11 @@ export function useServiceProducts() {
     const searchProductId = (id) => {
       return products.filter((product) => product.id === id )
     }
+
+    // ! Funcion para encontrar los producto de un categoria especifica - categoriaProductPage - LineUp
+    const searchProductCategorie = (categorie) => {
+      return products.filter((product) => product.categoria.toLowerCase() === categorie.toLowerCase() )
+    }
       
       //////////
     // ! FILTROS //
@@ -117,7 +122,8 @@ export function useServiceProducts() {
       // ? functions 
       filterProductsCategorias,
       filterProductsBrand,
-      searchProductId
+      searchProductId,
+      searchProductCategorie
     }
 }
 

@@ -14,7 +14,7 @@ export function CardContextProvider ({ children }){
         setProducts(tempProduct)
     }
 
-    const dellete = (id) => {
+    const remove = (id) => {
         let Indexprod = products.findIndex((prod) => prod.id === id)
         let product = products.find((prod) => prod.id === id)
         products.splice(Indexprod , 1)
@@ -37,7 +37,7 @@ export function CardContextProvider ({ children }){
 
     return (
         
-        <contextCard.Provider value={{priceTotal , count , setCount, products , addCard , dellete }}>
+        <contextCard.Provider value={{priceTotal , count , setCount, products , addCard , remove }}>
             { children }    
         </contextCard.Provider>
     )

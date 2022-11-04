@@ -17,7 +17,7 @@ const registerSchema = yup.object().shape(
     }
 )
 
-const ContactForm = () => {
+const ContactFormComponent = () => {
 
     const initialValues = {
             username: '',
@@ -81,4 +81,4 @@ const ContactForm = () => {
     )
 }
 
-export default ContactForm;
+export default ContactFormComponent;

@@ -22,7 +22,7 @@ const registerSchema = yup.object().shape(
     }
 )
 
-const RegisterForm = () => {
+const RegisterFormComponent = () => {
 
     const initialValues = {
             username: '',
@@ -88,4 +88,4 @@ const RegisterForm = () => {
     )
 }
 
-export default RegisterForm;
+export default RegisterFormComponent;

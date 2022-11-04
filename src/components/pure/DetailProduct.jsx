@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 // ? impotando cardContext
 import CardContext from '../../context/CardContext' 
 
-const DetailProduct = ( { product , goBack } ) => {
+const DetailProductComponent = ( { product , goBack } ) => {
 
     const { count , setCount , addCard } = useContext(CardContext);
 
@@ -82,8 +82,9 @@ const DetailProduct = ( { product , goBack } ) => {
 }
 
 
-DetailProduct.propTypes = {
-    product: PropTypes.object.isRequired
+DetailProductComponent.propTypes = {
+    product: PropTypes.object.isRequired,
+    goBack: PropTypes.func.isRequired
   }
 
-export default DetailProduct;
+export default DetailProductComponent;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FilterProduct = ({ categorias , filterProductsCategorias, indexCategorieApplied }) => {
+const FilterProductComponent = ({ categorias , filterProductsCategorias, indexCategorieApplied }) => {
 
     return (
       <div className='w-full flex flex-col justify-center items-center p-3'>
@@ -23,4 +23,4 @@ const FilterProduct = ({ categorias , filterProductsCategorias, indexCategorieAp
     )
 }
 
-export default FilterProduct;
+export default FilterProductComponent;

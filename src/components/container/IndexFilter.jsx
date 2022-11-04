@@ -6,7 +6,7 @@ import FilterBrands from '../pure/filters/FilterBrands';
 import { useServiceProducts } from '../../hooks/useServiceProducts';
 
 
-const IndexFilter = () => {
+const IndexFilterComponent = () => {
 
     const { categorias , brand , filterProductsCategorias , filterProductsBrand , indexCategorieApplied, indexBrandApplied } = useServiceProducts()
 
@@ -42,7 +42,7 @@ const IndexFilter = () => {
           </div>
           <div onClick={ viewFilterProducto } className='w-full flex justify-center items-center border-b rounded-lg p-3 cursor-pointer'>
             <div className='w-full flex justify-between items-center'>
-              <h2 className='text-md font-normal'>Filter Products component</h2>
+              <h2 className='text-lg'> Filter Products </h2>
               { arrowIcon }
             </div>
           </div>
@@ -55,7 +55,7 @@ const IndexFilter = () => {
           }
           <div onClick={ viewFilterBrand } className='w-full flex justify-center items-center border-b rounded-lg p-3 cursor-pointer'>
             <div className='w-full flex justify-between items-center'>
-              <h2 className='text-md' >Filter Brands component</h2>
+              <h2 className='text-lg' > Filter Brands </h2>
               { arrowIcon }
             </div>
           </div>
@@ -72,4 +72,4 @@ const IndexFilter = () => {
     )
 }
 
-export default IndexFilter;
+export default IndexFilterComponent;

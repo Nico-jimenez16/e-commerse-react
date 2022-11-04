@@ -1,18 +1,21 @@
 import React from 'react';
 
-const Footer = () => {
+const FooterComponent = () => {
   
   return (
     <>
         <footer className='w-full flex justify-center items-center h-auto md:h-16 mt-4 border-t'>
             <div className="w-full h-full block flex justify-center md:justify-start items-center items-center py-4">
               <div className="w-full md:w-1/2 flex justify-center items-center">
+                {/* Email  */}
                 <div className="flex justify-start items-center mt-1 mr-1 cursor-pointer">
                   <img className="w-6 mr-2" src="https://cdn-icons-png.flaticon.com/512/5968/5968534.png" alt="mail" />
                 </div>
+                {/* Linkedin  */}
                 <div className="flex justify-start items-center mt-1 mr-1 cursor-pointer">
                   <img className="w-6 mr-2" src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="Ln" />
                 </div>
+                {/* GitHub  */}
                 <div className="flex justify-start items-center mt-1 mr-1">
                   <div className="w-6 mr-2 cursor-pointer">
                     <svg height="24" aria-hidden="true" viewBox="0 0 16 16" version="1.1" data-view-component="true">
@@ -30,4 +33,4 @@ const Footer = () => {
   )
 }
 
-export default Footer
+export default FooterComponent;

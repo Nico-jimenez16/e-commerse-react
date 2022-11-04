@@ -6,6 +6,7 @@ import App from '../App';
 import HomePage from '../pages/Home/HomePage';
 import ProductsPage from '../pages/Products/ProductsPage';
 import DetailsProductPage from '../pages/Products/DetailsProductPage';
+import CategorieProductPage from '../pages/Products/CategorieProductPage';
 import LoginPage from '../pages/Auth/LoginPage';
 import RegisterPage from '../pages/Auth/RegisterPage';
 import CartPage from '../pages/Cart/CartPage';
@@ -20,7 +21,8 @@ const RoutesComponent = () => {
                   <Route path='/' element={ <App /> }>
                       <Route index path='/' element={ <HomePage/> } />
                       <Route path='products' element={ <ProductsPage/> } />
-                      <Route path='products/:productId' element={ <DetailsProductPage/>} />
+                      <Route path='products/:productId' element={ <DetailsProductPage/> } />
+                      <Route path='product/:categorie' element={ <CategorieProductPage/> } />
                       <Route path='login' element={ <LoginPage/> } />
                       <Route path='register' element={ <RegisterPage/> } />
                       <Route path='cart' element={ <CartPage/> } />

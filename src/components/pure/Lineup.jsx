@@ -1,12 +1,12 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Lineup = () => {
+const LineupComponent = () => {
 
     const nativage = useNavigate()
     
-    const goProducts = () => {
-      nativage('/products')
+    const goProducts = (categorie) => {
+      nativage(`/product/${categorie}`)
     }
 
     const lineupProduct = [
@@ -38,7 +38,7 @@ const Lineup = () => {
             {
               lineupProduct.map((lineup ,index) => {
                 return (
-                  <div onClick={() => goProducts( lineup.name ) } id={ lineup.name } key={index} className='relative w-3/4 md:w-48 h-48 mt-8 md:m-4 hover:-translate-y-1 hover:scale-110 duration-300 shadow-xl cursor-pointer'>
+                  <div onClick={() => goProducts( lineup.name.toLowerCase() ) } id={ lineup.name } key={index} className='relative w-3/4 md:w-48 h-48 mt-8 md:m-4 hover:-translate-y-1 hover:scale-110 duration-300 shadow-xl cursor-pointer'>
                       <div className='absolute w-full p-2 bottom-0 backdrop-contrast-50 bg-white/20'>
                         <h1 className='text-md font-bold'> {lineup.name} </h1>
                       </div>
@@ -53,4 +53,4 @@ const Lineup = () => {
     )
 }
 
-export default Lineup
+export default LineupComponent;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const LoaderComponent = () => {
+const LoadingComponent = () => {
   return (
     <>
     
@@ -16,4 +16,4 @@ const LoaderComponent = () => {
   )
 }
 
-export default LoaderComponent;
+export default LoadingComponent;

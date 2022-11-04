@@ -1,12 +1,10 @@
 import React , { useState } from 'react';
 import { Link , useNavigate } from 'react-router-dom';
 
-const Header = () => {
+const HeaderComponent = () => {
   
   const navigate = useNavigate()
   const [status, setStatus] = useState(false)
-  // console.log(setStatus)  
-
   const [modalView, setModalView] = useState(false)
 
   const viewModalMobile = () => {
@@ -92,4 +90,4 @@ const Header = () => {
   )
 }
 
-export default Header;
+export default HeaderComponent;

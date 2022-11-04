@@ -4,8 +4,10 @@ import React , { useContext } from 'react';
 import ProductComponent from '../pure/Product';
 import Loader from '../pure/Loader';
 
-// ? Usamos el context
+// Usamos el context
 import contextProducts from '../../context/ProductsContext' 
+
+
 
 const IndexProductsComponent = () => {
 

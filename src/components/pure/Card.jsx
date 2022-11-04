@@ -1,7 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-const Card = ({ product , dellete }) => {
+const CardComponent = ({ product , remove }) => {
   
   return (
     <>
@@ -16,11 +17,16 @@ const Card = ({ product , dellete }) => {
             contador
           </div>
           <div className='w-full md:w-1/5 lg:w-1/6 h-full flex justify-center items-center'> 
-            <button onClick={() => dellete(product.id)} className='w-full text-white p-2 bg-[#dc1626]'> Delete </button>
+            <button onClick={() => remove(product.id)} className='w-full text-white p-2 bg-[#dc1626]'> Delete </button>
           </div>
       </div>
     </>
   )
 }
 
-export default Card;
+CardComponent.propTypes = {
+  product: PropTypes.object.isRequired,
+  remove: PropTypes.func.isRequired
+}
+
+export default CardComponent;
