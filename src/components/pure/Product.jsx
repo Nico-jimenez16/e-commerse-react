@@ -20,7 +20,7 @@ const ProductComponent = ( { product } ) => {
             </div>
             { product.discount > 0 &&
               <div className='w-3/4 md:w-2/3 lg:w-2/4 xl:w-2/5 flex border rounded-lg pl-2 bg-cyan-400'>
-                <h4 className='text-white'> {product.discount}% OFF con Tarjetas Asociadas </h4>
+                <h4 className='text-white'> {product.discount}% OFF with associated cards </h4>
               </div>
             }
             { product.favorite &&
