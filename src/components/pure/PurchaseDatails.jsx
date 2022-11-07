@@ -8,19 +8,23 @@ const PurchaseDetails = ({ priceTotal , goProducts}) => {
           <div className='w-full h-16 flex justify-center items-center bg-white'>
             <h3 className='text-lg font-bold'> thank you for your purchase! </h3>
           </div>
-          <div className='w-full h-16 flex justify-between items-center p-4'>
-            <h3 className='text-md'> subtotal: </h3>
-            <h3 className='text-md'> $ { priceTotal } </h3>
-          </div>
-          <div className='w-full h-16 flex justify-between items-center p-4'>
-            <h3 className='text-lg font-bold'> Total: </h3>
-            <h3 className='text-lg font-bold'> $ { priceTotal } </h3>
-          </div>
-          <div className='w-full h-16 flex justify-center items-center p-2'>
-            <div className='w-full h-full bg-cyan-400'>
-              <button className='w-full h-full text-lg text-white hover:bg-black'> Finalize Purchase </button>
-            </div>
-          </div>
+          { priceTotal !== 0 &&
+            <>
+              <div className='w-full h-16 flex justify-between items-center p-4'>
+                <h3 className='text-md'> subtotal: </h3>
+                <h3 className='text-md'> $ { priceTotal } </h3>
+              </div>
+              <div className='w-full h-16 flex justify-between items-center p-4'>
+                <h3 className='text-lg font-bold'> Total: </h3>
+                <h3 className='text-lg font-bold'> $ { priceTotal } </h3>
+              </div>
+              <div className='w-full h-16 flex justify-center items-center p-2'>
+                <div className='w-full h-full bg-cyan-400'>
+                  <button className='w-full h-full text-lg text-white hover:bg-black'> Finalize Purchase </button>
+                </div>
+              </div>
+            </>
+          }
           <div className='w-full h-16 flex justify-center items-center p-2'>
             <div className='w-full h-full bg-cyan-400'>
               <button onClick={goProducts} className='w-full h-full text-lg text-white hover:bg-black'> Continue Shopping </button>

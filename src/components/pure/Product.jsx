@@ -19,14 +19,14 @@ const ProductComponent = ( { product } ) => {
               <h2 className='text-2xl'>$ {product.price} </h2>
             </div>
             { product.discount > 0 &&
-              <div className='w-3/4 md:w-2/3 lg:w-2/4 xl:w-2/5 flex border rounded-lg pl-2 bg-cyan-200'>
-                <h4 className='text-cyan-700'> {product.discount}% OFF con Tarjetas Asociadas </h4>
+              <div className='w-3/4 md:w-2/3 lg:w-2/4 xl:w-2/5 flex border rounded-lg pl-2 bg-cyan-400'>
+                <h4 className='text-white'> {product.discount}% OFF con Tarjetas Asociadas </h4>
               </div>
             }
             { product.favorite &&
 
-              <div className='w-3/4 md:w-2/3 lg:w-2/4 xl:w-2/5 flex border rounded-lg pl-2 bg-lime-200 mt-2'>
-                <h4 className='text-cyan-700'> best selling product </h4>
+              <div className='w-3/4 md:w-2/3 lg:w-2/4 xl:w-2/5 flex border rounded-lg pl-2 bg-lime-400 mt-2'>
+                <h4 className='text-white'> best selling product </h4>
               </div>
             }
           </div>

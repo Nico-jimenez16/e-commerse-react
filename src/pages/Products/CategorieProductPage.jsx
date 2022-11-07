@@ -44,8 +44,8 @@ const CategorieProductPage = () => {
 
     return (
         <>
-            <div className='w-full h-72 md:h-96 flex justify-center items-center overflow-hidden'>
-                <img className='w-fit h-full p-2' src={ banner() } alt="" />
+            <div className='w-full h-auto lg:h-96 flex justify-center items-center overflow-hidden'>
+                <img className='w-full h-full object-contain p-2' src={ banner() } alt="" />
             </div>
             <div className='w-full h-16 flex justify-center items-center p-2 bg-cyan-200'>
                 <h1 className='text-xl text-black font-bold'> { categorie } </h1>
@@ -53,7 +53,7 @@ const CategorieProductPage = () => {
             { !status &&
                 <Loader/>
             }
-            <div className='w-full p-8'>
+            <div className='w-full p-4 md:p-8'>
                 { status &&
                     product.map((product) => {
                         return (

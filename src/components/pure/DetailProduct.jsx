@@ -29,7 +29,7 @@ const DetailProductComponent = ( { product , goBack } ) => {
                     <img className='w-fit h-full m-auto object-contain' src={product.image} alt="" />
                 </div>
                 {/* Product features  */}
-                <div className="w-full flex flex-col justify-center items-center lg:w-1/2 p-2">
+                <div className="w-full flex flex-col justify-center items-center lg:w-1/2 py-2 px-4">
                     <div className='w-full flex justify-center items-center' >
                         <h1 className='text-xl md:text-2xl font-bold' > { product.title } </h1>
                     </div>
@@ -42,13 +42,13 @@ const DetailProductComponent = ( { product , goBack } ) => {
                         <div className='w-full flex flex-col justify-start items-center'>
                             <div className='w-full flex justify-start items-center'>
                             <h1 className='text-xl' >$ { product.price - ((product.price * product.discount) / 100) } </h1>
-                            <div className='ml-4 bg-cyan-200 px-2 rounded-lg'>
+                            <div className='ml-4 bg-cyan-400 px-2 rounded-lg'>
                                 <span className='text-white'>
                                 { product.discount }%
                                 </span>
                             </div>
                             </div>
-                            <h2 className='w-full flex ml-4 line-through'> {product.price} </h2>
+                            <h2 className='w-full flex ml-4 line-through'>$ {product.price} </h2>
                         </div>
                         :
                         <div className='w-full flex justify-start items-center h-12'>
@@ -69,7 +69,7 @@ const DetailProductComponent = ( { product , goBack } ) => {
             </div>
             {/* Product Description  */}
             <div className='w-full flex justify-center mt-8'>
-                <div className='w-full p-2 md:w-5/6 md:p-0 flex flex-col justify-center items-center'>
+                <div className='w-full py-2 px-4 md:w-5/6 md:p-0 flex flex-col justify-center items-center'>
                 <h2 className='w-full flex underline mb-2'> Description </h2>
                 <div>
                     <h2> { product.descripcion } </h2>
