@@ -1,5 +1,5 @@
 import { useState , useEffect , useContext } from 'react';
-import Servicios from '../data/data';
+import Servicios from '../services/data';
 
 // ? importando contexto 
 import contextProducts from '../context/ProductsContext';

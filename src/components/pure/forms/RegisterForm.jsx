@@ -3,7 +3,7 @@ import { Formik , Form , Field , ErrorMessage } from 'formik';
 import * as yup from 'yup';
 
 // ! importando los sevicios HTTP 
-// import Servicios from '../../../data/data.js'
+// import Servicios from '../../../services/data.js'
 
 
 const registerSchema = yup.object().shape(

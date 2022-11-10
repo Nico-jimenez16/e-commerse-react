@@ -1,5 +1,5 @@
 import { useEffect , useContext } from 'react';
-import Servicios from '../data/data';
+import Servicios from '../services/data';
 
 // ? importando context
 import contextUser from '../context/UserContext.js';
