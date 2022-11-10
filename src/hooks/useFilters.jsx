@@ -1,36 +1,13 @@
 import { useState , useEffect , useContext } from 'react';
-import Servicios from '../data/data';
 
 // ? importando contexto 
 import contextProducts from '../context/ProductsContext';
 
-export function useServiceProducts() {
+export function useFilterProducts() {
 
-    const { status , setStatus , products , setProducts , productsFiltered , setProductsFiltered } = useContext(contextProducts)
-
-    
-    // ! llama al servicio para obtener los datos de los productos
-    useEffect(() => {
-      Servicios.getProducts()
-          .then((product) => {
-            setProducts(product)
-            setProductsFiltered(product)
-            setStatus(true)
-          })
-          .catch(() => { console.error() })
-          
-    },[setStatus, setProducts, setProductsFiltered])
-    
-
-    // ! Funcion para encontrar un producto con un id especifico -DetailPage
-    const searchProductId = (id) => {
-      return products.filter((product) => product.id === id )
-    }
-
-    // ! Funcion para encontrar los producto de un categoria especifica - categoriaProductPage - LineUp
-    const searchProductCategorie = (categorie) => {
-      return products.filter((product) => product.categoria.toLowerCase() === categorie.toLowerCase() )
-    }
+    const { products , productsFiltered , setProductsFiltered } = useContext(contextProducts)
+    const [categorias, setCategorias] = useState([])
+    const [brand, setBrand] = useState([])
       
       //////////
     // ! FILTROS //
@@ -72,13 +49,6 @@ export function useServiceProducts() {
       }
     }
 
-      /////////////////////////////////////////////////////
-    // ! ESTADOS PARA OBTENER TODAS LAS CATEGORIAS Y LAS MARCAS //
-      /////////////////////////////////////////////////////
-    
-    const [categorias, setCategorias] = useState([])
-    const [brand, setBrand] = useState([])
-
     // ! Filtra las categorias que existen en los profuctos
     useEffect(() =>  {
 
@@ -110,10 +80,7 @@ export function useServiceProducts() {
     } , [products, productsFiltered])
 
 
-    return {
-      products, 
-      status, 
-      productsFiltered,
+    return { 
       categorias,
       brand,
       indexCategorieApplied,
@@ -122,8 +89,6 @@ export function useServiceProducts() {
       // ? functions 
       filterProductsCategorias,
       filterProductsBrand,
-      searchProductId,
-      searchProductCategorie
     }
 }
 

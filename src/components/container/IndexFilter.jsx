@@ -2,13 +2,9 @@ import React , { useState } from 'react';
 import FilterProduct from '../pure/filters/FilterCategories';
 import FilterBrands from '../pure/filters/FilterBrands';
 
-// ? importando custom Hook de servicios 
-import { useServiceProducts } from '../../hooks/useServiceProducts';
-
 
 const IndexFilterComponent = () => {
 
-    const { categorias , brand , filterProductsCategorias , filterProductsBrand , indexCategorieApplied, indexBrandApplied } = useServiceProducts()
 
     // ? estados para la visibilidad de las opciones del filtro
     const [productVisibility, setProductVisibility] = useState(false)
@@ -47,11 +43,7 @@ const IndexFilterComponent = () => {
             </div>
           </div>
           { productVisibility &&
-              <FilterProduct 
-                  categorias={ categorias } 
-                  filterProductsCategorias={filterProductsCategorias}
-                  indexCategorieApplied={indexCategorieApplied}
-              />
+              <FilterProduct/>
           }
           <div onClick={ viewFilterBrand } className='w-full flex justify-center items-center border-b rounded-lg p-3 cursor-pointer'>
             <div className='w-full flex justify-between items-center'>
@@ -60,11 +52,7 @@ const IndexFilterComponent = () => {
             </div>
           </div>
           { brandVisibility &&
-              <FilterBrands 
-                  brand={ brand } 
-                  filterProductsBrand={filterProductsBrand}
-                  indexBrandApplied={indexBrandApplied}
-              />
+              <FilterBrands/>
           }
         </div>
         

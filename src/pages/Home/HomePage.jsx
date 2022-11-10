@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import Lineup from '../../components/pure/Lineup';
 import ContactForm from '../../components/pure/forms/ContactForm';
 
-const bannerHome = require('../../assets/BannerHome.jpg')
+const bannerHome = require('../../assets/banner-technology.webp')
 
 const HomePage = () => {
 
@@ -18,10 +18,10 @@ const HomePage = () => {
           <h2 className='text-sm md:text-md text-white'> this month, the best products for you ! </h2>
         </div>
         <div className='relative w-full h-full lg:h-96 flex justify-center items-center'>
-          <img className='w-full h-full object-full' src={ bannerHome } alt="Banner Home page" />
+          <img className='w-full h-full object-fill' src={ bannerHome } alt="Banner Home page" />
           <div className='absolute w-full h-full flex flex-col justify-center items-start p-8'>
-            <h1 className='text-5xl text-white md:text-6xl font-serif'>VOTF</h1>
-            <button onClick={ goProduct } className='text-xl text-white border border-cyan-200 p-2 mt-4 hover:bg-cyan-200 hover:text-black'> Explore Products </button>
+            <h1 className='text-5xl text-white md:text-7xl font-serif'>VOTF</h1>
+            <button onClick={ goProduct } className='text-xl text-white border border-cyan-400 p-1 md:p-2 mt-1 md:mt-4 hover:bg-cyan-200 hover:text-black'> Explore Products </button>
           </div>
         </div>
         <div className='w-full h-auto flex flex-col justify-top items-center p-4'>

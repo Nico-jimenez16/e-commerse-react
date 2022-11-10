@@ -1,6 +1,10 @@
 import React from 'react';
+import { useFilterProducts } from '../../../hooks/useFilters';
 
-const FilterBrandsComponent = ({ brand , filterProductsBrand , indexBrandApplied }) => {
+const FilterBrandsComponent = () => {
+
+  const { brand , filterProductsBrand , indexBrandApplied } = useFilterProducts()
+
 
   return (
     <div className='w-full flex flex-col justify-center items-center p-3'>

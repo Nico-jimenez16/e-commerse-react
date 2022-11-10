@@ -4,28 +4,15 @@ const contextCard = React.createContext()
 
 export function CardContextProvider ({ children }){
 
-    const [count, setCount] = useState(1)
     const [products , setProducts] = useState([])
     const [priceTotal , setPriceTotal] = useState(0)
 
-    const addCard = (product) => {
-        const tempProduct = [...products]
-        tempProduct.push(product)
-        setProducts(tempProduct)
-    }
-
-    const remove = (id) => {
-        let Indexprod = products.findIndex((prod) => prod.id === id)
-        let product = products.find((prod) => prod.id === id)
-        products.splice(Indexprod , 1)
-        setPriceTotal(priceTotal - product.price )
-    }
 
     useEffect(() => {
         const calculateTotalPrice = () => {
             products.map(product => {
                 return(
-                    setPriceTotal( priceTotal + product.price )
+                    setPriceTotal( priceTotal + (product.price * product.quantityInCard ) )
                 )
             })
         }
@@ -37,7 +24,7 @@ export function CardContextProvider ({ children }){
 
     return (
         
-        <contextCard.Provider value={{priceTotal , count , setCount, products , addCard , remove }}>
+        <contextCard.Provider value={{priceTotal , setPriceTotal , products , setProducts}}>
             { children }    
         </contextCard.Provider>
     )

@@ -38,7 +38,7 @@ const CategorieProductPage = () => {
             case 'smartwatch':
                 return bannerSmartwatch
             default:
-                return bannerSmartwatch;
+                return bannerNotebook;
         }
     }
 

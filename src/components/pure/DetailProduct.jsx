@@ -1,22 +1,24 @@
-import React , { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-// ? impotando cardContext
-import CardContext from '../../context/CardContext' 
+// ? impotando cardHooks
+import { useCard } from '../../hooks/useCardProducts'
 
 const DetailProductComponent = ( { product , goBack } ) => {
 
-    const { count , setCount , addCard } = useContext(CardContext);
+    const { cantProduct , setCantProduct , addCard } = useCard()
 
     const sumar = () => {
-        setCount( count + 1 )
+        setCantProduct( cantProduct + 1 )
     }
     const restar = () => {
-        setCount( count - 1 )
+        if(cantProduct > 1) {
+            setCantProduct( cantProduct - 1 )
+        }
     }
 
-    const add = async (product) => {
-        await addCard(product)
+    const add = (product) => {
+        addCard(product , cantProduct )
         goBack(-1)
     }
 
@@ -58,7 +60,7 @@ const DetailProductComponent = ( { product , goBack } ) => {
                     <div className="w-full flex justify-center items-center mt-8">
                         <div className="w-1/2 md:w-1/3 flex justify-center items-center text-black font-bold p-2" >
                             <button onClick={ restar } className="w-1/3 mr-2 border-[#2c3e50] rounded-xl border-2 p-2 hover:bg-cyan-200 hover:text-black">-</button>
-                            <input disabled className="w-1/3 p-2 border-[#2c3e50] rounded-xl border-2" min="1" type="number" value={ count } />
+                            <input disabled className="w-1/3 p-2 border-[#2c3e50] rounded-xl border-2" min="1" type="number" value={ cantProduct } />
                             <button onClick={ sumar } className="w-1/3 ml-2 border-[#2c3e50] rounded-xl border-2 p-2 hover:bg-cyan-200 hover:text-black">+</button>
                         </div> 
                         <div className="w-1/2 md:w-2/3 flex justify-center items-center">
