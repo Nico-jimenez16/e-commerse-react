@@ -14,44 +14,44 @@ export function useFilterProducts() {
       ////////
 
     // ? estados para los filtros aplicados 
+    // eslint-disable-next-line
     const [indexCategorieApplied, setFiltercategorieApplied] = useState(null)
+    // eslint-disable-next-line
     const [indexBrandApplied, setFilterBrandApplied] = useState(null)
 
+    const [categorieFiltered, setCategorieFiltered] = useState('')
+    const [brandFiltered, setBrandFiltered] = useState('')
+
     const filterProductsCategorias = (categoria) => {
-      const index = categorias.indexOf(categoria)
-      if( index === indexCategorieApplied ){
+      setCategorieFiltered(categoria)
+      if( categorieFiltered === categoria ){
         setProductsFiltered(products)
-        setFiltercategorieApplied(null)
-        setFilterBrandApplied(null)
+        setCategorieFiltered('')
       } 
       else {
         const newFilter = products.filter((product) =>
           product.categoria.toLowerCase() === categoria.toLowerCase()
         )
-          setProductsFiltered(newFilter)
-          setFiltercategorieApplied(index)
-          setFilterBrandApplied(null)
+        setProductsFiltered(newFilter)
       }
     }
 
     const filterProductsBrand = (brand) => {
-      const index = brand.indexOf(brand)
-      if( index === indexBrandApplied ){
+      setBrandFiltered(brand)
+      if( brandFiltered === brand ){
         setProductsFiltered(products)
-        setFiltercategorieApplied([])
-        setFilterBrandApplied([])
+        setBrandFiltered('')
+        console.log(categorieFiltered)
       }else {
         const newFilter = productsFiltered.filter((product) =>
           product.brand.toLowerCase() === brand.toLowerCase()
         )
         setProductsFiltered(newFilter)
-        setFilterBrandApplied(index)
       }
     }
 
     // ! Filtra las categorias que existen en los profuctos
     useEffect(() =>  {
-
       const getCategories = () => {
         const categories = products.map((product) => {
           return (

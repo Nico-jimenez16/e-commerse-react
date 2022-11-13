@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import { Formik , Form , Field , ErrorMessage } from 'formik';
 import * as yup from 'yup';
 
@@ -10,7 +11,7 @@ const registerSchema = yup.object().shape(
     {
         username: yup.string()
             .min(6 , 'Username too short')
-            .max(12 , 'Username too long')
+            .max(10 , 'Username too long')
             .required('Username is required'),
         email: yup.string()
             .email('Invalid email format')
@@ -79,6 +80,7 @@ const RegisterFormComponent = () => {
                         }
                         <button className='mt-4 p-1 bg-[#54b4d3] text-white hover:shadow-lg rounded-lg' type="submit"> Register Account </button>
                         { isSubmitting ? ( <p>sending your credentials</p> ) : null}
+                        <Link to={'/login'} className='w-full flex justify-end items-center text-gray-400 mt-4 cursor-pointer' >Go to Login</Link>
                     </Form>
                 )
             }

@@ -3,13 +3,18 @@ import contextCard  from '../context/CardContext.js'
 
 export function useCard() {
 
-    const { priceTotal, setPriceTotal , products , setProducts } = useContext(contextCard)
+    const { priceTotal, setPriceTotal , priceFinal , setPriceFinal , products , setProducts } = useContext(contextCard)
 
     const [cantProduct, setCantProduct] = useState(1)
 
     const sumProduct = (id) => {
         const product = products.find(product => product.id === id )
         product.quantityInCard = product.quantityInCard + 1
+    }
+
+    const resProduct = (id) => {
+        const product = products.find(product => product.id === id )
+        product.quantityInCard = product.quantityInCard - 1
     }
 
 
@@ -28,7 +33,13 @@ export function useCard() {
         let Indexprod = products.findIndex((prod) => prod.id === id)
         let product = products.find((prod) => prod.id === id)
         products.splice(Indexprod , 1)
-        setPriceTotal(priceTotal - (product.price * product.quantityInCard ) )
+        if(product.discount !== 0){
+            setPriceTotal(priceTotal - (product.price * product.quantityInCard) )
+            setPriceFinal(priceFinal - (product.price - (product.price * product.discount)/ 100) * product.quantityInCard)   
+        }else {
+            setPriceTotal(priceTotal - product.price)
+            setPriceFinal(priceFinal - product.price)
+        }
     }
 
     return {
@@ -36,11 +47,13 @@ export function useCard() {
         setCantProduct,
         products,
         priceTotal,
+        priceFinal,
 
         // ? funciones 
         addCard,
         remove,
-        sumProduct
+        sumProduct,
+        resProduct
     }
 }
 

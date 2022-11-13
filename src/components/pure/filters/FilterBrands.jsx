@@ -11,7 +11,7 @@ const FilterBrandsComponent = () => {
         {
               brand.map((brand , index) => {
                 return(
-                  <div onClick={() => filterProductsBrand(brand) } key={index} className='w-full flex justify-around items-center my-1 hover:text-lime-400 cursor-pointer'>
+                  <div onClick={() => filterProductsBrand(brand) } key={index} className='w-full flex justify-around items-center my-1 hover:text-cyan-600 cursor-pointer'>
                     <h3 className='w-1/6'>
                       { (indexBrandApplied === index) ?
                         <img className='w-1/2 h-4' src="https://cdn-icons-png.flaticon.com/512/17/17153.png" alt="" /> :

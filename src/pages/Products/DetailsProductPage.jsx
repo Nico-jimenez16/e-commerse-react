@@ -1,6 +1,7 @@
-import React , { useState , useEffect } from 'react';
+import React from 'react';
 import { useParams , useNavigate } from 'react-router-dom';
-import { useServiceProducts } from '../../hooks/useServiceProducts';
+import { useProduct } from '../../hooks/useProduct';
+
 
 // ? importando componentes puros 
 import Loader from '../../components/pure/Loader';
@@ -13,17 +14,7 @@ const DetailsProductPage = () => {
     const navigate = useNavigate()
 
     // ? funcion del custom hook que busca el producto === productId
-    const { status , searchProductId }  = useServiceProducts( )
-
-    // ? Producto con id 
-    const [product, setProduct] = useState({})
-    
-    useEffect(() => {
-      
-      const response  = searchProductId( parseInt(productId) )
-      response.map((product) => { return setProduct(product) } )
-
-    }, [productId , searchProductId])
+    const { status , product }  = useProduct( parseInt(productId) )
 
     const goBack = (go) => {
       navigate(go)

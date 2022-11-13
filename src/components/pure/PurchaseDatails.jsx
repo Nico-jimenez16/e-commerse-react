@@ -1,6 +1,6 @@
 import React from "react";
 
-const PurchaseDetails = ({ priceTotal , goProducts}) => {
+const PurchaseDetails = ({ priceTotal , priceFinal , goProducts}) => {
 
     return (
       <>
@@ -10,13 +10,13 @@ const PurchaseDetails = ({ priceTotal , goProducts}) => {
           </div>
           { priceTotal !== 0 &&
             <>
-              <div className='w-full h-16 flex justify-between items-center p-4'>
+              <div className='w-full h-16 flex justify-between items-center p-4 line-through'>
                 <h3 className='text-md'> subtotal: </h3>
                 <h3 className='text-md'> $ { priceTotal } </h3>
               </div>
               <div className='w-full h-16 flex justify-between items-center p-4'>
-                <h3 className='text-lg font-bold'> Total: </h3>
-                <h3 className='text-lg font-bold'> $ { priceTotal } </h3>
+                <h3 className='text-lg font-bold'> Price Final: </h3>
+                <h3 className='text-lg font-bold'> $ { priceFinal } </h3>
               </div>
               <div className='w-full h-16 flex justify-center items-center p-2'>
                 <div className='w-full h-full bg-cyan-400'>

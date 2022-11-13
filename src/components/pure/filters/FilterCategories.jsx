@@ -11,7 +11,7 @@ const FilterProductComponent = () => {
         { 
             categorias.map((categoria , index) => {
               return(
-                <div onClick={() => filterProductsCategorias(categoria) } key={index} className='w-full flex justify-around items-center my-1 hover:text-lime-400 cursor-pointer'>
+                <div onClick={() => filterProductsCategorias(categoria) } key={index} className='w-full flex justify-around items-center my-1 hover:text-cyan-600 cursor-pointer'>
                   <h3 className='w-1/6'>
                     {(indexCategorieApplied === index) ?
                       <img className='w-1/2 h-4' src="https://cdn-icons-png.flaticon.com/512/17/17153.png" alt="" /> :
