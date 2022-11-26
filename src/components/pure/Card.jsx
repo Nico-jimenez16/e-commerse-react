@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { useCard } from '../../hooks/useCard';
 
-const CardComponent = ({ product , remove , sumar , restar }) => {
+const CardComponent = ({ product }) => {
 
+  const { sumarProduct , restarProduct , remove } = useCard()
   
   return (
     <>
@@ -15,9 +17,9 @@ const CardComponent = ({ product , remove , sumar , restar }) => {
             <h5 className='whitespace-nowrap overflow-hidden text-ellipsis hover:text-cyan-600'> { product.title } </h5> 
           </Link>
           <div className='w-full md:w-1/5 lg:w-1/6 h-full flex justify-center items-center p-2'>
-            <div onClick={() => restar(product.id) } className='w-1/3 h-full flex justify-end md:justify-center items-center'><span className='rounded-full h-1/2 flex items-center border border-black p-3 cursor-pointer'> - </span></div>
+            <div onClick={() => restarProduct(product.id) } className='w-1/3 h-full flex justify-end md:justify-center items-center'><span className='rounded-full h-1/2 flex items-center border border-black p-3 cursor-pointer'> - </span></div>
             <div className='w-1/3 h-full flex justify-center items-center'><span> { product.quantityInCard } </span></div>
-            <div onClick={() => sumar(product.id) } className='w-1/3 h-full flex justify-start md:justify-center items-center'><span className='rounded-full h-1/2 flex items-center border border-black p-3 cursor-pointer'> + </span></div>
+            <div onClick={() => sumarProduct(product.id) } className='w-1/3 h-full flex justify-start md:justify-center items-center'><span className='rounded-full h-1/2 flex items-center border border-black p-3 cursor-pointer'> + </span></div>
           </div>
           <div className='w-full md:w-1/5 lg:w-1/6 h-full flex justify-center items-center'> 
             <button onClick={() => remove(product.id)} className='w-full text-white bg-red-700 md:text-cyan-600 md:bg-transparent p-2'> Delete </button>
@@ -28,8 +30,7 @@ const CardComponent = ({ product , remove , sumar , restar }) => {
 }
 
 CardComponent.propTypes = {
-  product: PropTypes.object.isRequired,
-  remove: PropTypes.func.isRequired
+  product: PropTypes.object.isRequired
 }
 
 export default CardComponent;

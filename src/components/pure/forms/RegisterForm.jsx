@@ -1,17 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link , useNavigate } from 'react-router-dom'
 import { Formik , Form , Field , ErrorMessage } from 'formik';
 import * as yup from 'yup';
 
 // ! importando los sevicios HTTP 
-// import Servicios from '../../../services/data.js'
+import Servicios from '../../../services/data.js'
 
 
 const registerSchema = yup.object().shape(
     {
         username: yup.string()
             .min(6 , 'Username too short')
-            .max(10 , 'Username too long')
+            .max(14 , 'Username too long')
             .required('Username is required'),
         email: yup.string()
             .email('Invalid email format')
@@ -25,15 +25,27 @@ const registerSchema = yup.object().shape(
 
 const RegisterFormComponent = () => {
 
+    const navigate = useNavigate()
+
     const initialValues = {
             username: '',
             email: '',
             password: ''
-        };
+    };
 
-    const registerUser = (user) => {
-        console.log('estoy por registerForm - registerUser' , user)
-        // Servicios.registerUser(user)
+    const goLogin = () => {
+        navigate('/login')
+    }
+    
+
+
+    const registerUser = async ( user ) => {
+        const { status } = await Servicios.registerUser(user)
+            if(status === 200){
+                goLogin()
+            }else{
+                alert('No se pudo registrar usuario')
+            }
     }
 
     return (

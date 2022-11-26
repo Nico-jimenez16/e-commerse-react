@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-const ApiProducts = 'https://62a123797b9345bcbe46e31d.mockapi.io/Products';
-const ApiUser = ''
+const ApiProducts = 'https://backend-e-commerce-react.onrender.com/api/products';
+const ApiUser = 'https://backend-e-commerce-react.onrender.com/api/users';
 
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -9,50 +9,28 @@ export default {
 
   // ! Obtiener productos de la API
   async getProducts(){
-    try {
-        const response = await axios.get(ApiProducts)
-        const data = await response.data
-        return data
-    } catch (error) {
-        console.error(error)
-    }
+      return await axios.get(ApiProducts)
   },
 
   // ! Obtiener Usuarios de la API
   async getUsers(){
-    try {
-        const response = await axios.get(ApiUser)
-        const data = await response.data
-        return data
-    } catch (error) {
-        console.error(error)
-    }
+      return await axios.get(ApiUser)
   },
 
   // ! Loguar un usuario
-  
   async loginUser( User ) {
+    const { email , password } = User
 
-    const response = await axios.post('https://randomuser.me/api' , User)
-    const data = response.data.results[0]
-    return data
+    const response = await axios.get(ApiUser)
 
-    // const email = response.data.results[0].email
-    // const password = response.data.results[0].login.password
+    const data = response.data
+    const match = data.filter(u => u.email === email && u.password === password )
 
-    // const User = {
-    //   email ,
-    //   password
-    // }
-    // return User;
+    if(match) return match[0]
   },
 
    // ! registrar un usuario a la API
    async registerUser( User ){
-      try {
-        await axios.post( ApiUser, User )
-      } catch (error) {
-          console.error(error)
-      }
+        return await axios.post(ApiUser, User)
   }
 }

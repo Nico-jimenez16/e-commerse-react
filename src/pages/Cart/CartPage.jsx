@@ -1,6 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useCard } from '../../hooks/useCardProducts';
+import { useCard } from '../../hooks/useCard';
 
 // ? importando component 
 import Card from '../../components/pure/Card';
@@ -9,12 +8,7 @@ import PurchaseDetails from '../../components/pure/PurchaseDatails';
 
 const CartPage = () => {
 
-  const navigate = useNavigate()
-  const { sumProduct , resProduct , remove , priceTotal , priceFinal , products } = useCard()
-
-  function goProducts(){
-    navigate('/products')
-  }
+  const { products } = useCard()
 
   return (
     <>
@@ -26,9 +20,6 @@ const CartPage = () => {
                 return (
                   <Card 
                       product={product}
-                      remove={remove}
-                      sumar={sumProduct}
-                      restar={resProduct}
                       key={product.id} 
                   />
                 )
@@ -40,11 +31,7 @@ const CartPage = () => {
               </div>
             }
           </div>
-          <PurchaseDetails
-            priceTotal={priceTotal}
-            priceFinal={priceFinal}
-            goProducts={goProducts}
-          />
+          <PurchaseDetails/>
         </div>
 
     </>

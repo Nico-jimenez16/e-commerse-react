@@ -2,7 +2,7 @@ import React , { useState } from 'react';
 
 const contextUser = React.createContext()
 
-export function ProductsContextProvider ({ children }){
+export function UserContextProvider ({ children }){
 
     const [status, setStatus] = useState(false)
     const [users , setUsers] = useState({})

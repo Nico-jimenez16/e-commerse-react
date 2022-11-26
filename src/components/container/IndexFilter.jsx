@@ -43,6 +43,7 @@ const IndexFilterComponent = () => {
             </div>
           </div>
           { productVisibility &&
+            // ? Component 
               <FilterProduct/>
           }
           <div onClick={ viewFilterBrand } className='w-full flex justify-center items-center border-b rounded-lg p-3 cursor-pointer'>
@@ -52,6 +53,7 @@ const IndexFilterComponent = () => {
             </div>
           </div>
           { brandVisibility &&
+            // ? Component 
               <FilterBrands/>
           }
         </div>

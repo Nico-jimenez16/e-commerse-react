@@ -1,10 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import { Formik , Form , Field , ErrorMessage } from 'formik';
 import * as yup from 'yup';
 
 // ! importando los sevicios HTTP 
-// import Servicios from '../../../services/data.js'
+import Servicios from '../../../services/data.js';
+
+// ! importando hooks
+import { useServiceUser } from '../../../hooks/useServiceUsers';
 
 
 const loginSchema = yup.object().shape(
@@ -14,23 +17,33 @@ const loginSchema = yup.object().shape(
             .required('Email is required'),
         password: yup.string()
             .required('Password is required')
-            // .min(10 , 'minimum length of 10 characters')
     }
 )
 
 const LoginFormComponent = () => {
 
+    const { logged } = useServiceUser()
 
     const initialCredentials = {
         email: '',
         password: ''
     }
 
-    const userLogin = async (User) => {
-        console.log('estoy por loginForm - userLogin' , User);
-        // await Servicios.loginUser( User )
+    const userLogin = async ( User ) => {
+        try {
+            const response = await Servicios.loginUser( User )
+            if(response){
+                logged(response)
+            }else{
+                alert('No se pudo encontrar usuario')
+            }
+        } catch (err) {
+            console.error(err)
+        }
+        
     }
 
+    
     return (
         <>
             

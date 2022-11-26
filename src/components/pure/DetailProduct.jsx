@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // ? impotando cardHooks
-import { useCard } from '../../hooks/useCardProducts'
+import { useCard } from '../../hooks/useCard'
 
 const DetailProductComponent = ( { product , goBack } ) => {
 

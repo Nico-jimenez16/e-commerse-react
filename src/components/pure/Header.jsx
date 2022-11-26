@@ -1,11 +1,14 @@
 import React , { useState } from 'react';
 import { Link , useNavigate } from 'react-router-dom';
 
+import { useServiceUser } from '../../hooks/useServiceUsers'
+
 const HeaderComponent = () => {
   
   const navigate = useNavigate()
-  const [status, setStatus] = useState(false)
   const [modalView, setModalView] = useState(false)
+
+  const { status , loggedUser } = useServiceUser()
 
   const viewModalMobile = () => {
     setModalView(!modalView)
@@ -24,12 +27,15 @@ const HeaderComponent = () => {
             </div>
             <div className='w-full h-full flex justify-end items-center'>
               { status &&
-                <div className='w-auto h-full flex justify-center items-center'>
+                <Link className='w-auto h-full flex justify-center items-center'>
                   <div className='w-auto h-10 flex justify-center items-center border-b border-cyan-500 rounded-lg px-2'>
                     <img className='h-8' src="https://cdn-icons-png.flaticon.com/512/4526/4526817.png" alt="" />
-                    <h2 className='pl-2 text-black font-bold'> nicolas </h2>
+                    <h2 className='pl-2 text-black font-bold'> { loggedUser.username } </h2>
+                    <div className='p-2'>
+                      <svg aria-label="Icono de comilla angular hacia abajo" color="#262626" fill="#262626" height="12" role="img" viewBox="0 0 24 24" width="12" className="_ab6-"><path d="M12 17.502a1 1 0 01-.707-.293l-9-9.004a1 1 0 011.414-1.414L12 15.087l8.293-8.296a1 1 0 011.414 1.414l-9 9.004a1 1 0 01-.707.293z"></path></svg>
+                    </div>
                   </div>
-                </div>
+                </Link>
               }
               { !status &&
                 <>
@@ -55,12 +61,15 @@ const HeaderComponent = () => {
               <img className='h-8' src="https://cdn-icons-png.flaticon.com/512/4202/4202388.png" alt="bag"/>
             </div>
             { status &&
-                <div className='w-auto h-full flex justify-center items-center mr-2'>
+                <Link className='w-auto h-full flex justify-center items-center mr-2'>
                   <div className='w-auto h-10 flex justify-center items-center border-b border-cyan-500 rounded-lg px-2'>
                     <img className='h-8' src="https://cdn-icons-png.flaticon.com/512/4526/4526817.png" alt="" />
-                    <h2 className='pl-2 text-black font-bold'> nicolas </h2>
+                    <h2 className='pl-2 text-black font-bold'> { loggedUser.username } </h2>
+                    <div className='p-2'>
+                      <svg aria-label="Icono de comilla angular hacia abajo" color="#262626" fill="#262626" height="12" role="img" viewBox="0 0 24 24" width="12" className="_ab6-"><path d="M12 17.502a1 1 0 01-.707-.293l-9-9.004a1 1 0 011.414-1.414L12 15.087l8.293-8.296a1 1 0 011.414 1.414l-9 9.004a1 1 0 01-.707.293z"></path></svg>
+                    </div>
                   </div>
-                </div>
+                </Link>
 
               }
               { !status &&

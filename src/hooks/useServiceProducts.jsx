@@ -8,18 +8,22 @@ export function useServiceProducts() {
 
     const { status , setStatus , products , setProducts , productsFiltered , setProductsFiltered } = useContext(contextProducts)
 
+    const getProducts = async () => {
+      const { data } = await Servicios.getProducts()
+        setProducts(data)
+        setProductsFiltered(data)
+        setStatus(true)
+    }
     
     // ! llama al servicio para obtener los datos de los productos
     useEffect(() => {
-      Servicios.getProducts()
-          .then((product) => {
-            setProducts(product)
-            setProductsFiltered(product)
-            setStatus(true)
-          })
-          .catch(() => { console.error() })
-          
-    },[setStatus, setProducts, setProductsFiltered])
+      try {
+        getProducts()
+      } catch (err) {
+        console.error(err)
+      }
+      // eslint-disable-next-line      
+    },[])
 
     // ! Funcion para encontrar los producto de un categoria especifica - categoriaProductPage - LineUp
     const searchProductCategorie = (categorie) => {

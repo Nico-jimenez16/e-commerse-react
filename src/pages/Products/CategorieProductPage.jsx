@@ -1,5 +1,5 @@
 import React , { useState , useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import ProductComponent from '../../components/pure/Product';
 import Loader from '../../components/pure/Loader'
 
@@ -53,7 +53,10 @@ const CategorieProductPage = () => {
             { !status &&
                 <Loader/>
             }
-            <div className='w-full p-4 md:p-8'>
+            <Link to={'/products'} className='w-full h-12 flex justify-end items-end pr-4 md:pr-8 text-cyan-600'>
+                <h2> {'view all products ->>>'} </h2>
+            </Link>
+            <div className='w-full p-4 md:px-8 md:py-4'>
                 { status &&
                     product.map((product) => {
                         return (

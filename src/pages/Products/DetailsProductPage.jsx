@@ -6,6 +6,7 @@ import { useProduct } from '../../hooks/useProduct';
 // ? importando componentes puros 
 import Loader from '../../components/pure/Loader';
 import DetailProduct from '../../components/pure/DetailProduct';
+// import RecommendedProducts from '../../components/pure/RecommendedProducts';
 
 
 const DetailsProductPage = () => {
@@ -14,8 +15,8 @@ const DetailsProductPage = () => {
     const navigate = useNavigate()
 
     // ? funcion del custom hook que busca el producto === productId
-    const { status , product }  = useProduct( parseInt(productId) )
-
+    const { status , product }  = useProduct( parseInt( productId ) )
+    
     const goBack = (go) => {
       navigate(go)
     }
@@ -27,16 +28,22 @@ const DetailsProductPage = () => {
           <h1 className='text-xl font-bold underline'> Product Detail </h1>
         </div>
         { !status &&
-            
+        
             <Loader/>
         }
         { status &&
             
-            <DetailProduct 
+            <DetailProduct
               product={ product }
               goBack={goBack} 
             />
         }
+        {/* <div className='p-8'>
+          <h2 className='text-xl text-cyan-700'> Recommended products: </h2>
+            <RecommendedProducts
+              product={ product }
+            />
+        </div> */}
         
     </>
   )

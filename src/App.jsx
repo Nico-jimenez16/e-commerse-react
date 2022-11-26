@@ -10,6 +10,7 @@ import './App.css';
 
 import { ProductsContextProvider } from './context/ProductsContext';
 import { CardContextProvider } from './context/CardContext';
+import { UserContextProvider } from './context/UserContext'
 
 
 const App = () => {
@@ -19,11 +20,13 @@ const App = () => {
 
       <ProductsContextProvider>
         <CardContextProvider>
+          <UserContextProvider>
           <Header/>
           <main className='mt-16'>
               <Outlet/>
           </main>
           <Footer/>
+          </UserContextProvider>
         </CardContextProvider>
       </ProductsContextProvider>
 

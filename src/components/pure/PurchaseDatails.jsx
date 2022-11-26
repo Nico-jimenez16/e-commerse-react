@@ -1,6 +1,15 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
+import { useCard } from '../../hooks/useCard';
 
-const PurchaseDetails = ({ priceTotal , priceFinal , goProducts}) => {
+const PurchaseDetails = () => {
+
+    const navigate = useNavigate()
+    const { priceTotal , priceFinal  } = useCard()
+
+    function goProducts(){
+      navigate('/products')
+    }
 
     return (
       <>
@@ -27,7 +36,7 @@ const PurchaseDetails = ({ priceTotal , priceFinal , goProducts}) => {
           }
           <div className='w-full h-16 flex justify-center items-center p-2'>
             <div className='w-full h-full bg-cyan-400'>
-              <button onClick={goProducts} className='w-full h-full text-lg text-white hover:bg-black'> Continue Shopping </button>
+              <button onClick={ goProducts } className='w-full h-full text-lg text-white hover:bg-black'> Continue Shopping </button>
             </div>
           </div>
         </div>

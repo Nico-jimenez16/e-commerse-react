@@ -1,30 +1,29 @@
-import { useEffect , useContext } from 'react';
-import Servicios from '../services/data';
+import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom'
 
 // ? importando context
-import contextUser from '../context/UserContext.js';
+import contextUser from '../context/UserContext';
 
 export function useServiceUser() {
 
-    const { status , setStatus , users , setUsers , loggedUser , setLoggedUser } = useContext(contextUser)
-    
-    useEffect(() => {
-        Servicios.loginUser()
-            .then((user) => {
-                setUsers(user)
-                setStatus(true)
-            })
-            .catch(() => { console.error() })
-    },[setStatus , setUsers])
+    const { status , setStatus , users , loggedUser , setLoggedUser } = useContext(contextUser)
+    const navigate = useNavigate()
+
+
+    const goHome = () => {
+        navigate('/')
+    }
 
     const logged = (user) => {
         setLoggedUser(user)
         setStatus(true)
+        goHome()
     }
 
     const unlogged = () => {
         setLoggedUser({})
         setStatus(false)
+        goHome()
     }
 
     return {
