@@ -7,11 +7,21 @@ const HeaderComponent = () => {
   
   const navigate = useNavigate()
   const [modalView, setModalView] = useState(false)
+  const [logout, setLogout] = useState(false)
 
-  const { status , loggedUser } = useServiceUser()
+  const { status , loggedUser , unlogged } = useServiceUser()
 
   const viewModalMobile = () => {
     setModalView(!modalView)
+  }
+
+  const viewModalLogout = () => {
+    setLogout(!logout)
+  }
+
+  const logoutSesion = () => {
+    unlogged()
+    viewModalLogout()
   }
 
   const goCart = () => {
@@ -27,7 +37,7 @@ const HeaderComponent = () => {
             </div>
             <div className='w-full h-full flex justify-end items-center'>
               { status &&
-                <Link className='w-auto h-full flex justify-center items-center'>
+                <Link onClick={ viewModalLogout } className='w-auto h-full flex justify-center items-center'>
                   <div className='w-auto h-10 flex justify-center items-center border-b border-cyan-500 rounded-lg px-2'>
                     <img className='h-8' src="https://cdn-icons-png.flaticon.com/512/4526/4526817.png" alt="" />
                     <h2 className='pl-2 text-black font-bold'> { loggedUser.username } </h2>
@@ -61,7 +71,7 @@ const HeaderComponent = () => {
               <img className='h-8' src="https://cdn-icons-png.flaticon.com/512/4202/4202388.png" alt="bag"/>
             </div>
             { status &&
-                <Link className='w-auto h-full flex justify-center items-center mr-2'>
+                <Link onClick={ viewModalLogout } className='w-auto h-full flex justify-center items-center mr-2'>
                   <div className='w-auto h-10 flex justify-center items-center border-b border-cyan-500 rounded-lg px-2'>
                     <img className='h-8' src="https://cdn-icons-png.flaticon.com/512/4526/4526817.png" alt="" />
                     <h2 className='pl-2 text-black font-bold'> { loggedUser.username } </h2>
@@ -99,6 +109,11 @@ const HeaderComponent = () => {
                 </a>
               </div>
             </div>
+          </div>
+        }
+        { logout &&
+          <div className='absolute w-48 h-16 flex justify-start items-center right-2 md:right-24 bg-white z-50'>
+            <h2 onClick={ logoutSesion } className='text-lg ml-4 text-gray-400 p-2 underline cursor-pointer'> Log out </h2>
           </div>
         }
     </>
