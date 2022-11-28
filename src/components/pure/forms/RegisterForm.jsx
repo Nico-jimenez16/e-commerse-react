@@ -50,7 +50,7 @@ const RegisterFormComponent = () => {
 
     return (
         <>
-            <h1 className='text-xl font-bold underline'>Register</h1>
+            <h1 className='text-xl font-bold underline mb-4'>Register</h1>
             <Formik
                 initialValues={ initialValues }
                 validationSchema = { registerSchema }

@@ -47,7 +47,7 @@ const LoginFormComponent = () => {
     return (
         <>
             
-            <h1 className='text-xl font-bold underline'>Log in</h1>
+            <h1 className='text-xl font-bold underline mb-4'>Log in</h1>
             <Formik
                 initialValues={ initialCredentials }
                 validationSchema = { loginSchema }
