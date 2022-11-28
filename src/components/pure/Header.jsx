@@ -112,8 +112,8 @@ const HeaderComponent = () => {
           </div>
         }
         { logout &&
-          <div className='absolute w-48 h-16 flex justify-start items-center right-2 md:right-24 bg-white z-50'>
-            <h2 onClick={ logoutSesion } className='text-lg ml-4 text-gray-400 p-2 underline cursor-pointer'> Log out </h2>
+          <div className='absolute w-48 h-12 border border-t-0 flex justify-start items-center right-2 md:right-24 bg-white z-50'>
+            <h2 onClick={ logoutSesion } className='text-md ml-2 text-gray-400 p-2 cursor-pointer'> - Log out </h2>
           </div>
         }
     </>
