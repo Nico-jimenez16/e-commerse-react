@@ -5,10 +5,15 @@ import { useCard } from '../../hooks/useCard';
 const PurchaseDetails = () => {
 
     const navigate = useNavigate()
-    const { priceTotal , priceFinal  } = useCard()
+    const { priceTotal , priceFinal , clearCart  } = useCard()
 
     function goProducts(){
       navigate('/products')
+    }
+
+    function goThankYou(){
+      clearCart()
+      navigate('/thankyou')
     }
 
     return (
@@ -29,7 +34,7 @@ const PurchaseDetails = () => {
               </div>
               <div className='w-full h-16 flex justify-center items-center p-2'>
                 <div className='w-full h-full bg-cyan-400'>
-                  <button className='w-full h-full text-lg text-white hover:bg-black'> Finalize Purchase </button>
+                  <button onClick={ goThankYou } className='w-full h-full text-lg text-white hover:bg-black'> Finalize Purchase </button>
                 </div>
               </div>
             </>

@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { useNavigate } from 'react-router-dom'
 import { Formik , Form , Field , ErrorMessage } from 'formik';
 import * as yup from 'yup';
+import emailjs from '@emailjs/browser';
 
 const registerSchema = yup.object().shape(
     {
@@ -19,11 +21,24 @@ const registerSchema = yup.object().shape(
 
 const ContactFormComponent = () => {
 
+    const form = useRef();
+    const nativage = useNavigate()
+
     const initialValues = {
             username: '',
             email: '',
             message: '',
-        };
+    };
+
+    const sendMessage = () => {
+
+        emailjs.sendForm('service_0l1tfrn', 'template_ujespqj', form.current , 'eHxn3LWIt2sacmV5K')
+            .then(() => {
+                nativage('/thankyou')
+            }, (error) => {
+                alert(error)
+            });
+    }
 
     return (
         <>
@@ -31,15 +46,12 @@ const ContactFormComponent = () => {
             <Formik
                 initialValues={ initialValues }
                 validationSchema = { registerSchema }
-                onSubmit={async (values) => {
-                    await new Promise((r) => setTimeout(r, 1000));
-                    alert(JSON.stringify(values, null, 2));
-                }}
+                onSubmit={() => { sendMessage() }}
             >
             {
                 ({ errors, touched , isSubmitting }) => (
 
-                    <Form className='w-full p-4 md:p-0 md:w-2/5 flex flex-col' >
+                    <Form ref={form} className='w-full p-4 md:p-0 md:w-2/5 flex flex-col' >
                         <Field className='p-4 border-b rounded-xl mb-2' id="username" type='text' name="username" placeholder="your name or company name" />
                         {
                             // username errors 

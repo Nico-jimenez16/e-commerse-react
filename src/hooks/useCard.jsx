@@ -95,6 +95,12 @@ export function useCard() {
         }
     }
 
+    const clearCart = () => {
+        setProducts([])
+        setPriceTotal(0)
+        setPriceFinal(0)
+    }
+
     return {
         cantProduct,
         setCantProduct,
@@ -106,7 +112,8 @@ export function useCard() {
         addCard,
         remove,
         sumarProduct,
-        restarProduct
+        restarProduct,
+        clearCart
     }
 }
 

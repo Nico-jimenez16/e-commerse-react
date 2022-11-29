@@ -11,6 +11,7 @@ import LoginPage from '../pages/Auth/LoginPage';
 import RegisterPage from '../pages/Auth/RegisterPage';
 import CartPage from '../pages/Cart/CartPage';
 import NotFoundPage from '../pages/404/NotFoundPage';
+import ThankYouPage from '../pages/ThankYou/ThankYouPage';
 
 
 const RoutesComponent = () => {
@@ -26,6 +27,7 @@ const RoutesComponent = () => {
                       <Route path='login' element={ <LoginPage/> } />
                       <Route path='register' element={ <RegisterPage/> } />
                       <Route path='cart' element={ <CartPage/> } />
+                      <Route path='thankyou' element={ <ThankYouPage/> } />
                       <Route path="*" element={ <NotFoundPage/> } />
                   </Route>
               </Routes>
