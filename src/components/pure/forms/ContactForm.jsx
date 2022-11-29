@@ -83,7 +83,7 @@ const ContactFormComponent = () => {
                             )
                         }
                         <button className='mt-4 p-1 bg-[#54b4d3] text-white hover:shadow-lg rounded-lg' type="submit"> send message </button>
-                        { isSubmitting ? ( <p>sending your credentials</p> ) : null}
+                        { isSubmitting ? ( <p>sending your message</p> ) : null}
                     </Form>
                 )
             }
