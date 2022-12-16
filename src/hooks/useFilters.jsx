@@ -43,14 +43,7 @@ export function useFilterProducts() {
     // ! FILTROS //
       ////////
 
-    // ? estados para los filtros aplicados
-    // eslint-disable-next-line
-    const [indexCategorieApplied, setFiltercategorieApplied] = useState(null)
-    // eslint-disable-next-line
-    const [indexBrandApplied, setFilterBrandApplied] = useState(null)
-
     const [categorieFiltered, setCategorieFiltered] = useState('')
-    console.log("🚀 ~ file: useFilters.jsx ~ line 53 ~ useFilterProducts ~ categorieFiltered", categorieFiltered)
     const [brandFiltered, setBrandFiltered] = useState('')
     
     const filterProductsCategorias = (categoria) => {
@@ -92,8 +85,6 @@ export function useFilterProducts() {
     return { 
       categorias,
       brand,
-      indexCategorieApplied,
-      indexBrandApplied,
       
       // ? functions 
       filterProductsCategorias,
