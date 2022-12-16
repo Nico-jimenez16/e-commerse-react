@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Link , useNavigate } from 'react-router-dom'
 import { Formik , Form , Field , ErrorMessage } from 'formik';
 import * as yup from 'yup';
 
 // ! importando los sevicios HTTP 
 import Servicios from '../../../services/data.js'
+import contextNotification from '../../../context/NotificationContext.js';
 
 
 const registerSchema = yup.object().shape(
@@ -26,6 +27,7 @@ const registerSchema = yup.object().shape(
 const RegisterFormComponent = () => {
 
     const navigate = useNavigate()
+    const { notificationHandler } = useContext(contextNotification)
 
     const initialValues = {
             username: '',
@@ -37,14 +39,20 @@ const RegisterFormComponent = () => {
         navigate('/login')
     }
     
-
+    const handler = (args) => {
+        notificationHandler({
+            type: args.type,
+            message: args.message
+        })
+    }
 
     const registerUser = async ( user ) => {
         const { status } = await Servicios.registerUser(user)
             if(status === 200){
                 goLogin()
+                handler({ type:'success' , message:'successful registration'})
             }else{
-                alert('No se pudo registrar usuario')
+                handler({ type:'error' , message:'Unable to register user'})
             }
     }
 

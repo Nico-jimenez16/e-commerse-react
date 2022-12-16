@@ -1,8 +1,9 @@
-import React, { useRef } from 'react';
+import React, { useRef , useContext } from 'react';
 import { useNavigate } from 'react-router-dom'
 import { Formik , Form , Field , ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import emailjs from '@emailjs/browser';
+import contextNotification from '../../../context/NotificationContext.js';
 
 const registerSchema = yup.object().shape(
     {
@@ -23,6 +24,8 @@ const ContactFormComponent = () => {
 
     const form = useRef();
     const nativage = useNavigate()
+    const { notificationHandler } = useContext(contextNotification)
+
 
     const initialValues = {
             username: '',
@@ -30,12 +33,21 @@ const ContactFormComponent = () => {
             message: '',
     };
 
+    const handler = (args) => {
+        notificationHandler({
+            type: args.type,
+            message: args.message
+        })
+    }
+
     const sendMessage = () => {
 
         emailjs.sendForm('service_0l1tfrn', 'template_ujespqj', form.current , 'eHxn3LWIt2sacmV5K')
             .then(() => {
+                handler({ type:'success' , message:'message sent successfully'})
                 nativage('/thankyou')
             }, (error) => {
+                handler({ type:'error' , message:'there was an error sending the message'})
                 alert(error)
             });
     }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React , {useContext} from 'react';
 import { Link } from 'react-router-dom';
 import { Formik , Form , Field , ErrorMessage } from 'formik';
 import * as yup from 'yup';
@@ -8,7 +8,7 @@ import Servicios from '../../../services/data.js';
 
 // ! importando hooks
 import { useServiceUser } from '../../../hooks/useServiceUsers';
-
+import contextNotification from '../../../context/NotificationContext.js';
 
 const loginSchema = yup.object().shape(
     {
@@ -23,6 +23,7 @@ const loginSchema = yup.object().shape(
 const LoginFormComponent = () => {
 
     const { logged } = useServiceUser()
+    const { notificationHandler } = useContext(contextNotification)
 
     const initialCredentials = {
         email: '',
@@ -34,13 +35,21 @@ const LoginFormComponent = () => {
             const response = await Servicios.loginUser( User )
             if(response){
                 logged(response)
+                handler({ type:'success' , message:'successful login'})
             }else{
-                alert('No se pudo encontrar usuario')
+                handler({ type:'error' , message:'User could not be found'})
             }
         } catch (err) {
             console.error(err)
         }
         
+    }
+
+    const handler = (args) => {
+        notificationHandler({
+            type: args.type,
+            message: args.message
+        })
     }
 
     
