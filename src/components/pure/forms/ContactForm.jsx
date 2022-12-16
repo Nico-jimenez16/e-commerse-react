@@ -46,9 +46,8 @@ const ContactFormComponent = () => {
             .then(() => {
                 handler({ type:'success' , message:'message sent successfully'})
                 nativage('/thankyou')
-            }, (error) => {
+            }, () => {
                 handler({ type:'error' , message:'there was an error sending the message'})
-                alert(error)
             });
     }
 
