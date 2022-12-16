@@ -54,7 +54,7 @@ const CategorieProductPage = () => {
                 <Loader/>
             }
             <Link to={'/products'} className='w-full h-12 flex justify-end items-end pr-4 md:pr-8 text-cyan-600'>
-                <h2> {'view all products ->>>'} </h2>
+                <h2 className='underline text-lg'> {'view all products'} </h2>
             </Link>
             <div className='w-full p-4 md:px-8 md:py-4'>
                 { status &&
