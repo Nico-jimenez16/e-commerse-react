@@ -1,0 +1,18 @@
+.style-title{
+    display: block;
+    font-family: serif;
+    white-space: nowrap;
+    width: 8ch;
+
+    animation: typing 2s steps(8),
+    blink .5s infinite step-end alternate;
+    overflow: hidden;
+}
+
+@keyframes typing {
+    from { width: 0 }
+}
+
+@keyframes blink {
+    50% { border-color: transparent }
+}
