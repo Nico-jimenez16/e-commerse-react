@@ -1,6 +1,7 @@
 import React from 'react';
-import { useParams , useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useProduct } from '../../hooks/useProduct';
+import { useRedirect } from '../../hooks/useRedirect';
 
 
 // ? importando componentes puros 
@@ -12,13 +13,13 @@ import DetailProduct from '../../components/pure/DetailProduct';
 const DetailsProductPage = () => {
 
     const { productId } = useParams()
-    const navigate = useNavigate()
+    const { goToPage } = useRedirect()
 
     // ? funcion del custom hook que busca el producto === productId
     const { status , product }  = useProduct( parseInt( productId ) )
     
     const goBack = (go) => {
-      navigate(go)
+      goToPage(go)
     }
 
   return (

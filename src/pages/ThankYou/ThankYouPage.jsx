@@ -1,12 +1,12 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRedirect } from '../../hooks/useRedirect';
 
 const ThankYouPage = () => {
 
-  const navigate = useNavigate()
+  const { goToPage } = useRedirect()
   
   function goHome() {
-    navigate('/')
+    goToPage('/')
   }
   
   return (

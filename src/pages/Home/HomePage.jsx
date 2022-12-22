@@ -1,19 +1,20 @@
 import React from 'react';
 import '../../styles/title.css'
-import { useNavigate } from 'react-router-dom'
 import Lineup from '../../components/pure/Lineup';
 import ContactForm from '../../components/pure/forms/ContactForm';
+import { useRedirect } from '../../hooks/useRedirect'
 
 const bannerHome = require('../../assets/banner-technology.webp')
 
 
 const HomePage = () => {
 
-    const navigate = useNavigate()
+    const { goToPage } = useRedirect()
 
     const goProduct = () => {
-      navigate('/products')
+      goToPage('/products')
     }
+
     return (
       <>
         <div className='w-full flex justify-center items-center p-1 bg-red-500'>

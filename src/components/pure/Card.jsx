@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+
+// importando hooks 
 import { useCard } from '../../hooks/useCard';
 
 const CardComponent = ({ product }) => {

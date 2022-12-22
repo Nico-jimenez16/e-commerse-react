@@ -1,9 +1,11 @@
 import React , { useContext } from 'react';
+import PropTypes from 'prop-types';
+
 import contextNotification from '../../../context/NotificationContext';
 
 const ConfirmationComponent = () => {
 
-  const {showNotification , type , message} = useContext(contextNotification)
+  const { showNotification , type , message } = useContext(contextNotification)
 
   return (
     <>
@@ -17,6 +19,12 @@ const ConfirmationComponent = () => {
 
     </>
   )
+}
+
+ConfirmationComponent.propTypes = {
+  showNotification: PropTypes.bool.isRequired,
+  type: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired
 }
 
 export default ConfirmationComponent;

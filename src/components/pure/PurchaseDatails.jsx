@@ -1,19 +1,21 @@
 import React from "react";
-import { useNavigate } from 'react-router-dom';
+
+// impotando Hooks 
 import { useCard } from '../../hooks/useCard';
+import { useRedirect } from '../../hooks/useRedirect';
 
 const PurchaseDetails = () => {
 
-    const navigate = useNavigate()
     const { priceTotal , priceFinal , clearCart  } = useCard()
+    const { goToPage } = useRedirect()
 
     function goProducts(){
-      navigate('/products')
+      goToPage('/products')
     }
 
     function goThankYou(){
       clearCart()
-      navigate('/thankyou')
+      goToPage('/thankyou')
     }
 
     return (

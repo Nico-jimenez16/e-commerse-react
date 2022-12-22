@@ -1,9 +1,10 @@
 import React, { useRef , useContext } from 'react';
-import { useNavigate } from 'react-router-dom'
 import { Formik , Form , Field , ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import emailjs from '@emailjs/browser';
 import contextNotification from '../../../context/NotificationContext.js';
+
+import { useRedirect } from '../../../hooks/useRedirect';
 
 const registerSchema = yup.object().shape(
     {
@@ -23,8 +24,8 @@ const registerSchema = yup.object().shape(
 const ContactFormComponent = () => {
 
     const form = useRef();
-    const nativage = useNavigate()
     const { notificationHandler } = useContext(contextNotification)
+    const { goToPage } = useRedirect()
 
 
     const initialValues = {
@@ -45,7 +46,7 @@ const ContactFormComponent = () => {
         emailjs.sendForm('service_0l1tfrn', 'template_ujespqj', form.current , 'eHxn3LWIt2sacmV5K')
             .then(() => {
                 handler({ type:'success' , message:'message sent successfully'})
-                nativage('/thankyou')
+                goToPage('/thankyou')
             }, () => {
                 handler({ type:'error' , message:'there was an error sending the message'})
             });

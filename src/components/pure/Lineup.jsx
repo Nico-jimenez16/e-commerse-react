@@ -1,6 +1,7 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 
+// importando Hooks 
+import { useRedirect } from '../../hooks/useRedirect';
 
 const Notebook = require('../../assets/lineup/noteLineup.jpg')
 const Smartphone = require('../../assets/lineup/smartphoneLineup.jpg')
@@ -28,10 +29,10 @@ const lineupProduct = [
 
 const LineupComponent = () => {
 
-    const nativage = useNavigate()
+    const { goToPage } = useRedirect()
     
     const goProducts = (categorie) => {
-      nativage(`/product/${categorie}`)
+      goToPage(`/product/${categorie}`)
     }
 
     return (

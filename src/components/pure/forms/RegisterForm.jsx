@@ -1,7 +1,8 @@
 import React, {useContext} from 'react';
-import { Link , useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Formik , Form , Field , ErrorMessage } from 'formik';
 import * as yup from 'yup';
+import { useRedirect } from '../../../hooks/useRedirect';
 
 // ! importando los sevicios HTTP 
 import Servicios from '../../../services/data.js'
@@ -26,7 +27,7 @@ const registerSchema = yup.object().shape(
 
 const RegisterFormComponent = () => {
 
-    const navigate = useNavigate()
+    const { goToPage } = useRedirect()
     const { notificationHandler } = useContext(contextNotification)
 
     const initialValues = {
@@ -36,7 +37,7 @@ const RegisterFormComponent = () => {
     };
 
     const goLogin = () => {
-        navigate('/login')
+        goToPage('/login')
     }
     
     const handler = (args) => {

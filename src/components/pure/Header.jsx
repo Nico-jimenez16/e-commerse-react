@@ -1,15 +1,17 @@
 import React , { useState } from 'react';
-import { Link , useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-import { useServiceUser } from '../../hooks/useServiceUsers'
+// importando Hooks 
+import { useServiceUser } from '../../hooks/useServiceUsers';
+import { useRedirect } from '../../hooks/useRedirect';
 
 const HeaderComponent = () => {
   
-  const navigate = useNavigate()
   const [modalView, setModalView] = useState(false)
   const [logout, setLogout] = useState(false)
 
   const { status , loggedUser , unlogged } = useServiceUser()
+  const { goToPage } = useRedirect()
 
   const viewModalMobile = () => {
     setModalView(!modalView)
@@ -25,7 +27,7 @@ const HeaderComponent = () => {
   }
 
   const goCart = () => {
-    navigate('/cart')
+    goToPage('/cart')
   }
   
   return (

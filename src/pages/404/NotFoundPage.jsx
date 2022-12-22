@@ -1,12 +1,12 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom'
+import { useRedirect } from '../../hooks/useRedirect';
 
 const NotFoundPage = () => {
   
-  const nativage = useNavigate()
+  const { goToPage } = useRedirect()
   
   const goHome = () => {
-    nativage('/')
+    goToPage('/')
   }
 
   return (
