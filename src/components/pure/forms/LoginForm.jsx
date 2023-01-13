@@ -64,7 +64,7 @@ const LoginFormComponent = () => {
             >
             {
                 ({ errors, touched , isSubmitting }) => ( 
-                    <Form className='w-full md:w-2/5 p-4 md:p-0 flex flex-col' > 
+                    <Form className='w-full md:w-4/5 lg:w-2/5 p-4 md:p-0 flex flex-col' > 
                         <Field className='p-4 border-b rounded-xl mb-2' id="email" type='email' name="email" placeholder="example@acme.com" />
                         {
                             // email errors 

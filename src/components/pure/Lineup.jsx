@@ -45,7 +45,7 @@ const LineupComponent = () => {
             {
               lineupProduct.map((lineup ,index) => {
                 return (
-                  <div onClick={() => goProducts( lineup.name.toLowerCase() ) } id={ lineup.name } key={index} className='relative w-1/2 border md:w-1/3 lg:w-48 h-auto md:h-48 mt-8 md:m-4 hover:-translate-y-1 hover:scale-110 duration-300 shadow-xl cursor-pointer'>
+                  <div onClick={() => goProducts( lineup.name.toLowerCase() ) } id={ lineup.name } key={index} className='relative w-1/2 border md:w-1/3 lg:w-56 h-auto md:h-48 lg:h-56 mt-4 md:m-4 hover:-translate-y-1 hover:scale-110 duration-300 shadow-xl cursor-pointer'>
                       <img className='w-full h-full object-cover' src={lineup.img} alt="lineupImages" />
                       <div className='absolute w-full p-2 bottom-0 backdrop-contrast-50 bg-white/20'>
                         <h1 className='text-md font-bold'> {lineup.name} </h1>

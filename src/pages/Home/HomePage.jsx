@@ -22,7 +22,7 @@ const HomePage = () => {
         </div>
         <div className='relative w-full h-full lg:h-96 flex justify-center items-center'>
           <img className='w-full h-full object-fill' src={ bannerHome } alt="Banner Home page" />
-          <div className='absolute w-full h-full flex flex-col justify-center items-start p-8'>
+          <div className='absolute w-full h-full flex flex-col justify-center items-start p-2 md:p-8'>
             <span className='text-5xl text-white md:text-7xl style-title'>N-VOTF</span>
             <button onClick={ goProduct } className='text-xl text-white border border-cyan-400 p-1 md:p-2 mt-1 md:mt-2'> Explore Products </button>
           </div>

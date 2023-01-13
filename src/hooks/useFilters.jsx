@@ -69,11 +69,12 @@ export function useFilterProducts() {
       const obj = productsFiltered.find((c) => c.categoria )
       const match =  brandFiltered.toLowerCase() === brand.toLowerCase()
 
-      if( match ){
+      if( match && categorieFiltered === ''){
         filterProductsCategorias(obj.categoria)
         setBrandFiltered('')
         setCategorieFiltered('')
-      }else {
+      }
+      else {
         const newFilter = productsFiltered.filter((product) =>
           product.brand.toLowerCase() === brand.toLowerCase()
         )

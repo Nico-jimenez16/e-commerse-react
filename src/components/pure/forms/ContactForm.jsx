@@ -63,7 +63,7 @@ const ContactFormComponent = () => {
             {
                 ({ errors, touched , isSubmitting }) => (
 
-                    <Form ref={form} className='w-full p-4 md:p-0 md:w-2/5 flex flex-col' >
+                    <Form ref={form} className='w-full md:w-4/5 lg:w-2/5 p-4 md:p-0 flex flex-col' >
                         <Field className='p-4 border-b rounded-xl mb-2' id="username" type='text' name="username" placeholder="your name or company name" />
                         {
                             // username errors 
