@@ -20,10 +20,11 @@ const App = () => {
 
   return (
     <>
-
+      {/* Contextos para variables globales  */}
       <ProductsContextProvider>
         <CardContextProvider>
           <UserContextProvider>
+            {/* header de la aplicacion  */}
           <Header/>
           <main className='mt-16'>
             <NotificationContextProvider>
@@ -31,6 +32,7 @@ const App = () => {
               <ConfirmationComponent/>
             </NotificationContextProvider>
           </main>
+          {/* footer de la aplicacion  */}
           <Footer/>
           </UserContextProvider>
         </CardContextProvider>

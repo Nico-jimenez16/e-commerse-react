@@ -16,6 +16,7 @@ export function useProduct( id ) {
     // ! llama al servicio para obtener los datos de los productos
     useEffect(() => {
         try {
+            console.log('Llamada a la api - detail product')
             getProducts()
           } catch (err) {
             console.error(err)
