@@ -9,9 +9,9 @@ const ProductComponent = ( { product } ) => {
   return (
     <>
         
-        <Link to={`/products/${product.id}`} className='w-full h-56 block md:flex justify-center items-center rounded-xl border-y p-4 shadow-xl mb-4'>
+        <Link to={`/products/${product.id}`} className='w-full h-auto md:h-56 block md:flex justify-center items-center rounded-xl border-y p-4 shadow-xl mb-4'>
           <div className='w-full md:w-1/3 h-56 md:h-full'>
-            <img className='w-fit h-full m-auto object-contain' src={product.image} alt="" />
+            <img className='w-full h-full object-contain' src={product.image} alt="" />
           </div>
           <div className='w-full md:w-2/3 h-auto'>
             <h1 className='text-md md:text-xl text-black font-bold whitespace-nowrap overflow-hidden text-ellipsis p-2'> {product.title} </h1>
