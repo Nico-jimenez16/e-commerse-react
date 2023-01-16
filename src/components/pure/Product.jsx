@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import '../../styles/product.css';
 
 const ProductComponent = ( { product } ) => {
-
+    
   return (
     <>
         

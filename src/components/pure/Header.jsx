@@ -34,8 +34,8 @@ const HeaderComponent = () => {
     <>
         <nav id='desk' className='fixed z-50 w-full hidden md:flex justify-start items-center h-16 border-b bg-white top-0'>  
             <div className='w-full h-full flex justify-start items-center'>
-              <Link className='p-4 text-gray-400' to='/' > Home </Link>
-              <Link className='p-4 text-gray-400' to='/products' > Products </Link>
+              <Link className='p-4 text-gray-400 uppercase' to='/' > Home </Link>
+              <Link className='p-4 text-gray-400 uppercase' to='/products' > Products </Link>
             </div>
             <div className='w-full h-full flex justify-end items-center'>
               { status &&
@@ -51,11 +51,11 @@ const HeaderComponent = () => {
               }
               { !status &&
                 <>
-                  <Link className='p-4 text-gray-400' to='/login' > Login </Link>
-                  <Link className='p-4 text-gray-400' to='/register' > Register </Link>
+                  <Link className='p-4 text-gray-400 uppercase' to='/login' > Login </Link>
+                  <Link className='p-4 text-gray-400 uppercase' to='/register' > Register </Link>
                 </>
               }
-              <Link className='p-4 text-cyan-700' to='/cart' > view cart </Link>
+              <Link className='p-4 text-cyan-700 uppercase' to='/cart' > view cart </Link>
             </div>
         </nav>
         <nav id='mobile' className='fixed z-50 w-full flex md:hidden justify-start items-center h-16 border-b bg-white top-0'>
@@ -69,10 +69,10 @@ const HeaderComponent = () => {
               </button>
             </div>
             <div className='w-3/4 md:w-full h-full flex justify-end items-center'>
-            <div onClick={ goCart } className='w-auto h-16 flex justify-center items-center mr-4'>
-              <img className='h-8' src="https://cdn-icons-png.flaticon.com/512/4202/4202388.png" alt="bag"/>
-            </div>
-            { status &&
+              <div onClick={ goCart } className='w-auto h-16 flex justify-center items-center mr-4'>
+                <img className='h-8' src="https://cdn-icons-png.flaticon.com/512/4202/4202388.png" alt="bag"/>
+              </div>
+              { status &&
                 <Link onClick={ viewModalLogout } className='w-auto h-full flex justify-center items-center mr-2'>
                   <div className='w-auto h-10 flex justify-center items-center border-b border-cyan-500 rounded-lg px-2'>
                     <img className='h-8' src="https://cdn-icons-png.flaticon.com/512/4526/4526817.png" alt="" />
@@ -86,8 +86,8 @@ const HeaderComponent = () => {
               }
               { !status &&
                 <>
-                  <Link className='p-2 md:p-4 text-gray-400' to='/login' > Login </Link>
-                  <Link className='p-2 md:p-4 text-gray-400' to='/register' > Register </Link>
+                  <Link className='p-2 md:p-4 text-gray-400 uppercase' to='/login' > Login </Link>
+                  <Link className='p-2 md:p-4 text-gray-400 uppercase' to='/register' > Register </Link>
                 </>
               }
             </div>
@@ -95,8 +95,8 @@ const HeaderComponent = () => {
         { modalView &&
           <div id='modal-mobile' className='w-full flex justify-center items-center md:hidden fixed z-50'>
             <div className='w-3/4 h-48 flex flex-col bg-white border-x-2 border-b-2 border-cyan-500'>
-              <Link onClick={ viewModalMobile } className='w-full h-10 flex justify-center items-center text-gray-400 border-b' to='/' > Home </Link>
-              <Link onClick={ viewModalMobile } className='w-full h-10 flex justify-center items-center text-gray-400 border-b' to='/products' > Products </Link>
+              <Link onClick={ viewModalMobile } className='w-full h-10 flex justify-center items-center text-gray-400 border-b uppercase' to='/' > Home </Link>
+              <Link onClick={ viewModalMobile } className='w-full h-10 flex justify-center items-center text-gray-400 border-b uppercase' to='/products' > Products </Link>
               <div className="w-full h-10 flex justify-evenly items-center mt-1 mr-1">
                 <a href="mailto:jimeneznicolas520@gmail.com" target="_blank" rel="noreferrer">
                   <img className="w-6 mr-2 cursor-pointer" src="https://cdn-icons-png.flaticon.com/512/5968/5968534.png" alt="mail" />
