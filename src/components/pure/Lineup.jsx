@@ -53,7 +53,7 @@ const LineupComponent = () => {
                   >
                       <img className='w-full h-full object-contain' src={lineup.img} alt="lineupImages" />
                       <div className='absolute w-full p-2 bottom-0 backdrop-contrast-50 bg-white/20'>
-                        <h1 className='text-md font-bold'> {lineup.name} </h1>
+                        <h1 className='text-md font-bold uppercase'> {lineup.name} </h1>
                       </div>
                   </div>
                 )

@@ -54,7 +54,7 @@ const ContactFormComponent = () => {
 
     return (
         <>
-            <h1 className='text-xl font-bold underline mb-4'>contact me</h1>
+            <h1 className='text-xl font-bold underline mb-4 uppercase'>contact me</h1>
             <Formik
                 initialValues={ initialValues }
                 validationSchema = { registerSchema }

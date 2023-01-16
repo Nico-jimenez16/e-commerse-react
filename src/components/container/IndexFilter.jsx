@@ -38,7 +38,7 @@ const IndexFilterComponent = () => {
           </div>
           <div onClick={ viewFilterProducto } className='w-full flex justify-center items-center border-b rounded-lg p-3 cursor-pointer'>
             <div className='w-full flex justify-between items-center'>
-              <h2 className='text-lg'> Filter Products </h2>
+              <h2 className='text-lg'> Categories </h2>
               { arrowIcon }
             </div>
           </div>
@@ -48,7 +48,7 @@ const IndexFilterComponent = () => {
           }
           <div onClick={ viewFilterBrand } className='w-full flex justify-center items-center border-b rounded-lg p-3 cursor-pointer'>
             <div className='w-full flex justify-between items-center'>
-              <h2 className='text-lg' > Filter Brands </h2>
+              <h2 className='text-lg' > Brands </h2>
               { arrowIcon }
             </div>
           </div>
