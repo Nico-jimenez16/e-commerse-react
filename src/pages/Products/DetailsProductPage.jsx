@@ -16,7 +16,8 @@ const DetailsProductPage = () => {
     const { goToPage } = useRedirect()
 
     // ? funcion del custom hook que busca el producto === productId
-    const { status , product }  = useProduct( parseInt( productId ) )
+    const id = parseInt( productId )
+    const { status , product }  = useProduct(id)
     
     const goBack = (go) => {
       goToPage(go)
@@ -24,18 +25,17 @@ const DetailsProductPage = () => {
 
   return (
     <>
-        <p className='left-0 ml-4 pt-2 cursor-pointer text-cyan-600' onClick={() => goBack(-1) } > { '<< Back' } </p>
+        <p className='left-0 ml-4 pt-2 cursor-pointer text-cyan-600' onClick={() => goBack(-1) } > Back to Product </p>
         <div className='w-full px-4 py-2 flex justify-center'>
           <h1 className='text-xl font-bold underline'> Product Detail </h1>
         </div>
         { !status &&
-        
             <Loader/>
         }
         { status &&
             
             <DetailProduct
-              product={ product }
+              product={product}
               goBack={goBack} 
             />
         }

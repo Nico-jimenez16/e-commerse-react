@@ -17,8 +17,8 @@ const ThankYouPage = () => {
         <div className='w-2/4 h-96'>
           <img className='w-full h-full m-auto' src="https://st2.depositphotos.com/5945712/10990/i/600/depositphotos_109907526-stock-photo-emoticons-emoji-smile-icons-isolated.jpg" alt="" />
         </div>
-        <div onClick={goHome} className='p-4 border cursor-pointer'>
-          <h1 className='text-xl font-bold text-green-600'>Go to Home</h1>
+        <div onClick={goHome} className='w-1/3 p-4 bg-cyan-500 hover:bg-cyan-400 border cursor-pointer'>
+          <h1 className='text-center text-xl font-bold text-white'>Go to Home</h1>
         </div>
       </div>
 

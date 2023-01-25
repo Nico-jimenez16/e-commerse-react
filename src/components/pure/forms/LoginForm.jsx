@@ -1,4 +1,4 @@
-import React , {useContext} from 'react';
+import React , { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Formik , Form , Field , ErrorMessage } from 'formik';
 import * as yup from 'yup';
@@ -36,6 +36,9 @@ const LoginFormComponent = () => {
             if(response){
                 logged(response)
                 handler({ type:'success' , message:'successful login'})
+                window.localStorage.setItem(
+                    'logguedUser', JSON.stringify(response)
+                )
             }else{
                 handler({ type:'error' , message:'User could not be found'})
             }

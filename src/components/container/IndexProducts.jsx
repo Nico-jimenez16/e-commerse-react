@@ -11,6 +11,7 @@ import { useServiceProducts } from '../../hooks/useServiceProducts';
 const IndexProductsComponent = () => {
 
   const {status , productsFiltered } = useServiceProducts()
+  
 
   return (
     <>

@@ -9,35 +9,35 @@ export function useFilterProducts() {
     const [categorias, setCategorias] = useState([])
     const [brand, setBrand] = useState([])
 
-        // ! Filtra las categorias que existen en los profuctos
-        useEffect(() =>  {
+    // ! Filtra las categorias que existen en los profuctos
+    useEffect(() =>  {
 
-          const getCategories = () => {
-            const categories = products.map((product) => {
-              return (
-                product.categoria.toLowerCase()
-              )
-            })
-            const uniques = new Set(categories)
-            let result = [...uniques]
-            setCategorias(result)
-          }
+      const getCategories = () => {
+        const categories = products.map((product) => {
+          return (
+            product.categoria.toLowerCase()
+          )
+        })
+        const uniques = new Set(categories)
+        let result = [...uniques]
+        setCategorias(result)
+      }
+
+      const getBrand = () => {
+        const brand = productsFiltered.map((product) => {
+          return (
+            product.brand.toLowerCase()
+          )
+        })
+        const uniques = new Set(brand);
+        let result = [...uniques];
+        setBrand(result)
+      }
+
+      getCategories()
+      getBrand()
     
-          const getBrand = () => {
-            const brand = productsFiltered.map((product) => {
-              return (
-                product.brand.toLowerCase()
-              )
-            })
-            const uniques = new Set(brand);
-            let result = [...uniques];
-            setBrand(result)
-          }
-    
-          getCategories()
-          getBrand()
-        
-        } , [products, productsFiltered])
+    } , [products, productsFiltered])
       
       //////////
     // ! FILTROS //

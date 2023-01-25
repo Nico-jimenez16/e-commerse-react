@@ -5,12 +5,11 @@ const contextUser = React.createContext()
 export function UserContextProvider ({ children }){
 
     const [status, setStatus] = useState(false)
-    const [users , setUsers] = useState({})
     const [loggedUser, setLoggedUser] = useState({})
 
 
     return (
-        <contextUser.Provider value={{ status , setStatus , users , setUsers , loggedUser , setLoggedUser }}>
+        <contextUser.Provider value={{ status , setStatus , loggedUser , setLoggedUser }}>
             { children }    
         </contextUser.Provider>
     )

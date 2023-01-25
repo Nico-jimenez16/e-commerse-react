@@ -24,7 +24,7 @@ const HomePage = () => {
           <img className='w-full h-full object-fill' src={ bannerHome } alt="Banner Home page" />
           <div className='absolute w-full h-full flex flex-col justify-center items-start p-2 md:p-8'>
             <span className='text-5xl text-white md:text-7xl style-title'>N-VOTF</span>
-            <button onClick={ goProduct } className='text-xl text-white border border-cyan-400 hover:bg-white hover:text-black p-1 md:p-2 mt-1 md:mt-2 uppercase'> Explore Products </button>
+            <button onClick={ goProduct } className='text-xl md:text-2xl text-white font-bold bg-blue-800 hover:bg-blue-700 p-1 md:p-2 mt-1 md:mt-2 uppercase'> Explore Products </button>
           </div>
         </div>
         <div className='w-full h-auto flex flex-col justify-center items-center p-4'>

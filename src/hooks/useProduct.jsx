@@ -1,45 +1,27 @@
-import { useState , useEffect } from 'react';
-import Servicios from '../services/data'
+import { useState, useEffect, useContext } from 'react';
+
+// ? importando contexto 
+import contextProducts from '../context/ProductsContext';
 
 export function useProduct( id ) {
-
-    const [products, setProducts] = useState([])
-    const [status, setStatus] = useState(false)
+    // STATE 
     const [product, setProduct] = useState({})
 
-    const getProducts = async () => {
-        const { data } = await Servicios.getProducts()
-            setProducts(data)
-            setStatus(true)
-    }
-
-    // ! llama al servicio para obtener los datos de los productos
-    useEffect(() => {
-        try {
-            console.log('Llamada a la api - detail product')
-            getProducts()
-          } catch (err) {
-            console.error(err)
-          }    
-      },[id])
+    const { status, products } = useContext(contextProducts)
 
     // ! Funcion para encontrar un producto con un id especifico -DetailPage
-    const searchProductId = () => {
-        return products.filter((product) => product.id === id )
-    }
-
     useEffect(() => {
-      
+        const searchProductId = () => {
+            return products.filter((product) => product.id === id )
+        }
         const response  = searchProductId()
         response.map((product) => { return setProduct( product ) })
     
-    // eslint-disable-next-line
-    }, [status])
+    }, [status, id, products])
 
     return {
         status,
-        product,
-        searchProductId
+        product
     }
 }
 

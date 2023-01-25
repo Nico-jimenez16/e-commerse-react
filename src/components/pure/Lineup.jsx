@@ -41,7 +41,7 @@ const LineupComponent = () => {
         <div className='w-full flex justify-center item-center p-4'>
           <h1 className='rounded-lg text-white bg-cyan-500 px-12 py-1'>Lineup Products</h1>
         </div>
-        <div className='w-full grid gap-1 grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 text-center m-auto p-4 md:p-8 shadow-inner shadow-cyan-500/50 border-b'>
+        <div className='w-full grid gap-1 grid-cols-2 lg:grid-cols-4 xl:gap-16 text-center m-auto p-4 md:p-8 shadow-inner shadow-cyan-500/50 border-b'>
             {
               lineupProduct.map((lineup ,index) => {
                 return (

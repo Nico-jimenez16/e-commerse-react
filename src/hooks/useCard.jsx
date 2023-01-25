@@ -1,10 +1,20 @@
-import { useState , useContext } from 'react';
+import { useContext, useState } from 'react';
 import contextCard  from '../context/CardContext.js';
 
 export function useCard() {
 
     const { priceTotal, setPriceTotal , priceFinal , setPriceFinal , products , setProducts } = useContext(contextCard)
     const [cantProduct, setCantProduct] = useState(1)
+
+    const sumarCantidad = () => {
+        setCantProduct(() => cantProduct + 1 )
+    }
+
+    const restarCantidad = () => {
+        if(cantProduct > 1) {
+            setCantProduct(() => cantProduct - 1 )
+        }
+    }
 
     // ! Funcion para calcular el precio sub total de la compra 
     const calculateSubTotalPrice = () => {
@@ -35,27 +45,6 @@ export function useCard() {
     calculateSubTotalPrice()
     calculateTotalPrice()
 
-    
-    // ! Funcion que suma en 1 la cantidad de un producto en el Carrito 
-    const sumarProduct = (id) => {
-        const product = products.find(product => product.id === id )
-        product.quantityInCard = product.quantityInCard + 1
-        calculateSubTotalPrice()
-        calculateTotalPrice()
-    }
-
-    // ! Funcion que resta en 1 la cantidad de un producto en el Carrito
-    const restarProduct = (id) => {
-        const product = products.find(product => product.id === id )
-        if(product.quantityInCard > 1){
-            product.quantityInCard = product.quantityInCard - 1
-        }else{
-            remove(id)
-        }
-        calculateSubTotalPrice()
-        calculateTotalPrice()
-    }
-
     // ! Funcion que agrega un producto en el Carrito
     const addCard = (product , quantity) => {
         const matching = products.find( p => p.id === product.id )
@@ -82,7 +71,7 @@ export function useCard() {
     }
 
     // ! Funcion que elimina un producto del Carrito
-    const remove = (id) => {
+    const removeProduct = (id) => {
         let Indexprod = products.findIndex((prod) => prod.id === id)
         let product = products.find((prod) => prod.id === id)
         products.splice(Indexprod , 1)
@@ -94,6 +83,26 @@ export function useCard() {
             setPriceFinal(priceFinal - (product.price * product.quantityInCard))
         }
     }
+    
+    // ! Funcion que suma en 1 la cantidad de un producto en el Carrito 
+    const sumarCantProductInCart = (id) => {
+        const product = products.find(product => product.id === id )
+        product.quantityInCard = product.quantityInCard + 1
+        calculateSubTotalPrice()
+        calculateTotalPrice()
+    }
+
+    // ! Funcion que resta en 1 la cantidad de un producto en el Carrito
+    const restarCantProductInCart = (id) => {
+        const product = products.find(product => product.id === id )
+        if(product.quantityInCard > 1){
+            product.quantityInCard = product.quantityInCard - 1
+        }else{
+            removeProduct(id)
+        }
+        calculateSubTotalPrice()
+        calculateTotalPrice()
+    }
 
     const clearCart = () => {
         setProducts([])
@@ -102,18 +111,19 @@ export function useCard() {
     }
 
     return {
-        cantProduct,
-        setCantProduct,
         products,
         priceTotal,
         priceFinal,
+        cantProduct,
 
         // ? funciones 
         addCard,
-        remove,
-        sumarProduct,
-        restarProduct,
-        clearCart
+        removeProduct,
+        sumarCantProductInCart,
+        restarCantProductInCart,
+        clearCart,
+        sumarCantidad, 
+        restarCantidad
     }
 }
 

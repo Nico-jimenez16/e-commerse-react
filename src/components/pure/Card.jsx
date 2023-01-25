@@ -7,7 +7,7 @@ import { useCard } from '../../hooks/useCard';
 
 const CardComponent = ({ product }) => {
 
-  const { sumarProduct , restarProduct , remove } = useCard()
+  const { sumarCantProductInCart , restarCantProductInCart , removeProduct } = useCard()
   
   return (
     <>
@@ -19,12 +19,12 @@ const CardComponent = ({ product }) => {
             <h5 className='whitespace-nowrap overflow-hidden text-ellipsis hover:text-cyan-600'> { product.title } </h5> 
           </Link>
           <div className='w-full md:w-1/5 lg:w-1/6 h-full flex justify-center items-center p-2'>
-            <div onClick={() => restarProduct(product.id) } className='w-1/3 h-full flex justify-end md:justify-center items-center'><span className='rounded-full h-1/2 flex items-center border border-black p-3 cursor-pointer'> - </span></div>
+            <div onClick={() => restarCantProductInCart(product.id) } className='w-1/3 h-full flex justify-end md:justify-center items-center'><span className='rounded-full h-1/2 flex items-center border border-black p-3 cursor-pointer'> - </span></div>
             <div className='w-1/3 h-full flex justify-center items-center'><span> { product.quantityInCard } </span></div>
-            <div onClick={() => sumarProduct(product.id) } className='w-1/3 h-full flex justify-start md:justify-center items-center'><span className='rounded-full h-1/2 flex items-center border border-black p-3 cursor-pointer'> + </span></div>
+            <div onClick={() => sumarCantProductInCart(product.id) } className='w-1/3 h-full flex justify-start md:justify-center items-center'><span className='rounded-full h-1/2 flex items-center border border-black p-3 cursor-pointer'> + </span></div>
           </div>
           <div className='w-full md:w-1/5 lg:w-1/6 h-full flex justify-center items-center'> 
-            <button onClick={() => remove(product.id)} className='w-full text-white bg-red-700 md:text-cyan-600 md:bg-transparent p-2'> Delete </button>
+            <button onClick={() => removeProduct(product.id)} className='w-full text-white bg-red-700 md:text-cyan-600 md:bg-transparent p-2'> Delete </button>
           </div>
       </div>
     </>

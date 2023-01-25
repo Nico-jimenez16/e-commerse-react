@@ -6,7 +6,7 @@ import { useRedirect } from '../../hooks/useRedirect';
 
 const PurchaseDetails = () => {
 
-    const { priceTotal , priceFinal , clearCart  } = useCard()
+    const { priceTotal, priceFinal, clearCart } = useCard()
     const { goToPage } = useRedirect()
 
     function goProducts(){
@@ -35,15 +35,15 @@ const PurchaseDetails = () => {
                 <h3 className='text-lg font-bold'> $ { priceFinal } </h3>
               </div>
               <div className='w-full h-16 flex justify-center items-center p-2'>
-                <div className='w-full h-full bg-cyan-400'>
-                  <button onClick={ goThankYou } className='w-full h-full text-lg text-white hover:bg-black'> Finalize Purchase </button>
+                <div className='w-full h-full bg-cyan-600 hover:bg-cyan-500'>
+                  <button onClick={ goThankYou } className='w-full h-full text-lg text-white'> Finalize Purchase </button>
                 </div>
               </div>
             </>
           }
           <div className='w-full h-16 flex justify-center items-center p-2'>
-            <div className='w-full h-full bg-cyan-400'>
-              <button onClick={ goProducts } className='w-full h-full text-lg text-white hover:bg-black'> Continue Shopping </button>
+            <div className='w-full h-full bg-cyan-600 hover:bg-cyan-500 '>
+              <button onClick={ goProducts } className='w-full h-full text-lg text-white'> Continue Shopping </button>
             </div>
           </div>
         </div>
