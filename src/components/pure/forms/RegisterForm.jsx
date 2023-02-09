@@ -5,15 +5,7 @@ import * as yup from 'yup';
 import { useRedirect } from '../../../hooks/useRedirect';
 
 // ! importando los sevicios HTTP 
-<<<<<<< HEAD
-<<<<<<< HEAD
 import {registerUser} from '../../../services/data.js'
-=======
-import Servicios from '../../../services/data.js'
->>>>>>> e0d5a6b27d4a7a60888a452b524c0cfa394eb522
-=======
-import { registerUser } from '../../../services/data.js'
->>>>>>> parent of e0d5a6b (Revert "nejoras de codigo, agregue button component")
 import contextNotification from '../../../context/NotificationContext.js';
 
 

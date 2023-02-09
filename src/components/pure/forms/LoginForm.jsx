@@ -4,15 +4,7 @@ import { Formik , Form , Field , ErrorMessage } from 'formik';
 import * as yup from 'yup';
 
 // ! importando los sevicios HTTP 
-<<<<<<< HEAD
-<<<<<<< HEAD
 import {loginUser} from '../../../services/data.js';
-=======
-import Servicios from '../../../services/data.js';
->>>>>>> e0d5a6b27d4a7a60888a452b524c0cfa394eb522
-=======
-import { loginUser } from '../../../services/data.js';
->>>>>>> parent of e0d5a6b (Revert "nejoras de codigo, agregue button component")
 
 // ! importando hooks
 import { useServiceUser } from '../../../hooks/useServiceUsers';
@@ -40,15 +32,7 @@ const LoginFormComponent = () => {
 
     const userLogin = async ( User ) => {
         try {
-<<<<<<< HEAD
-<<<<<<< HEAD
             const response = await loginUser( User )
-=======
-            const response = await Servicios.loginUser( User )
->>>>>>> e0d5a6b27d4a7a60888a452b524c0cfa394eb522
-=======
-            const response = await loginUser(User)
->>>>>>> parent of e0d5a6b (Revert "nejoras de codigo, agregue button component")
             if(response){
                 logged(response)
                 handlerNotification({ type:'success' , message:'successful login'})
