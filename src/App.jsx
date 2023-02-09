@@ -6,7 +6,7 @@ import Header from './components/pure/Header';
 import Footer from './components/pure/Footer';
 import ConfirmationComponent from './components/pure/notifications/Confirmation';
 
-// import styles globales
+// import styles 
 import './App.css';
 
 // importando los contextos
