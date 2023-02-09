@@ -1,5 +1,9 @@
 import React , { useState, useEffect } from 'react';
+<<<<<<< HEAD
 import {getProducts} from '../services/data'
+=======
+import Servicios from '../services/data'
+>>>>>>> e0d5a6b27d4a7a60888a452b524c0cfa394eb522
 
 const contextProducts = React.createContext()
 
@@ -14,13 +18,13 @@ export function ProductsContextProvider ({ children }){
     useEffect(() => {
       console.log('Context LLamada a API')
         try {
-          const handleObtainProducts = async () => {
-            const { data } = await getProducts()
+          const getProducts = async () => {
+            const { data } = await Servicios.getProducts()
               setProducts(data)
               setProductsFiltered(data)
               setStatus(true)
           }
-          handleObtainProducts()
+          getProducts()
         } catch (err) {
           console.error(err)
         }
