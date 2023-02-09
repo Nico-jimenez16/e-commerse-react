@@ -8,7 +8,7 @@ export function CardContextProvider ({ children }){
     const [products , setProducts] = useState([])
     const [priceFinal , setPriceFinal] = useState(0)
     const [priceTotal , setPriceTotal] = useState(0)
-    
+
     return (
         
         <contextCard.Provider value={{ products , setProducts , priceFinal , setPriceFinal , priceTotal, setPriceTotal }}>

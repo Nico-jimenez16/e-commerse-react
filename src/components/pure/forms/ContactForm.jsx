@@ -24,7 +24,7 @@ const registerSchema = yup.object().shape(
 const ContactFormComponent = () => {
 
     const form = useRef();
-    const { notify } = useContext(contextNotification)
+    const { notificationHandler } = useContext(contextNotification)
     const { goToPage } = useRedirect()
 
 
@@ -34,8 +34,8 @@ const ContactFormComponent = () => {
             message: '',
     };
 
-    const handlerNotification = (args) => {
-        notify({
+    const handler = (args) => {
+        notificationHandler({
             type: args.type,
             message: args.message
         })
@@ -45,10 +45,10 @@ const ContactFormComponent = () => {
 
         emailjs.sendForm('service_0l1tfrn', 'template_ujespqj', form.current , 'eHxn3LWIt2sacmV5K')
             .then(() => {
-                handlerNotification({ type:'success' , message:'message sent successfully'})
+                handler({ type:'success' , message:'message sent successfully'})
                 goToPage('/thankyou')
             }, () => {
-                handlerNotification({ type:'error' , message:'there was an error sending the message'})
+                handler({ type:'error' , message:'there was an error sending the message'})
             });
     }
 

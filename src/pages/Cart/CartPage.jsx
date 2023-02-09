@@ -1,5 +1,5 @@
-import React, {useContext} from 'react';
-import contextCard from '../../context/CardContext';
+import React from 'react';
+import { useCard } from '../../hooks/useCard';
 
 // ? importando component 
 import Card from '../../components/pure/Card';
@@ -8,7 +8,7 @@ import PurchaseDetails from '../../components/pure/PurchaseDatails';
 
 const CartPage = () => {
 
-  const { products } = useContext(contextCard)
+  const { products } = useCard()
 
   return (
     <>
@@ -18,7 +18,6 @@ const CartPage = () => {
             {products &&
               products.map((product) => {
                 return (
-                  // ? component
                   <Card 
                       product={product}
                       key={product.id} 
@@ -32,7 +31,6 @@ const CartPage = () => {
               </div>
             }
           </div>
-          {/* ? component  */}
           <PurchaseDetails/>
         </div>
 

@@ -6,16 +6,16 @@ import FilterBrands from '../pure/filters/FilterBrands';
 const IndexFilterComponent = () => {
 
 
-    // estados para la visibilidad de las opciones del filtro
+    // ? estados para la visibilidad de las opciones del filtro
     const [productVisibility, setProductVisibility] = useState(false)
     const [brandVisibility, setBrandVisibility] = useState(false)
 
-    // funcion para habilitar y deshabilitar las categorias de los productos  
+    // ? funcion para habilitar y deshabilitar las categorias de los productos  
     const viewFilterProducto = () => {
       setProductVisibility(!productVisibility)
     }
 
-    // funcion para habilitar y deshabilitar las marcas de los productos
+    // ? funcion para habilitar y deshabilitar las marcas de los productos
     const viewFilterBrand = () => {
       setBrandVisibility(!brandVisibility)
     }
@@ -44,7 +44,7 @@ const IndexFilterComponent = () => {
           </div>
           { productVisibility &&
             // ? Component 
-              <FilterProduct />
+              <FilterProduct/>
           }
           <div onClick={ viewFilterBrand } className='w-full flex justify-center items-center border-b rounded-lg p-3 cursor-pointer'>
             <div className='w-full flex justify-between items-center'>
@@ -54,7 +54,7 @@ const IndexFilterComponent = () => {
           </div>
           { brandVisibility &&
             // ? Component 
-              <FilterBrands />
+              <FilterBrands/>
           }
         </div>
         

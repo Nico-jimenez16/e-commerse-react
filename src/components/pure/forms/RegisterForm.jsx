@@ -5,7 +5,7 @@ import * as yup from 'yup';
 import { useRedirect } from '../../../hooks/useRedirect';
 
 // ! importando los sevicios HTTP 
-import { registerUser } from '../../../services/data.js'
+import Servicios from '../../../services/data.js'
 import contextNotification from '../../../context/NotificationContext.js';
 
 
@@ -28,7 +28,7 @@ const registerSchema = yup.object().shape(
 const RegisterFormComponent = () => {
 
     const { goToPage } = useRedirect()
-    const { notify } = useContext(contextNotification)
+    const { notificationHandler } = useContext(contextNotification)
 
     const initialValues = {
             username: '',
@@ -40,20 +40,20 @@ const RegisterFormComponent = () => {
         goToPage('/login')
     }
     
-    const handlerNotification = (args) => {
-        notify({
+    const handler = (args) => {
+        notificationHandler({
             type: args.type,
             message: args.message
         })
     }
 
-    const handleRegisterUser = async ( user ) => {
-        const { status } = await registerUser(user)
+    const registerUser = async ( user ) => {
+        const { status } = await Servicios.registerUser(user)
             if(status === 200){
                 goLogin()
-                handlerNotification({ type:'success' , message:'successful registration'})
+                handler({ type:'success' , message:'successful registration'})
             }else{
-                handlerNotification({ type:'error' , message:'Unable to register user'})
+                handler({ type:'error' , message:'Unable to register user'})
             }
     }
 
@@ -63,7 +63,7 @@ const RegisterFormComponent = () => {
             <Formik
                 initialValues={ initialValues }
                 validationSchema = { registerSchema }
-                onSubmit={async (values) => { handleRegisterUser(values) }}
+                onSubmit={async (values) => { registerUser(values) }}
             >
             {
                 ({ errors, touched , isSubmitting }) => (

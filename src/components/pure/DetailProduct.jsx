@@ -1,23 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import ButtonComponent from './Button';
 
 // impotando Hooks
 import { useCard } from '../../hooks/useCard';
 
 const DetailProductComponent = ( { product, goBack } ) => {
 
-    const { addCard } = useCard()
-
-    const [cantProduct, setCantProduct] = useState(1)
-    const sumarCantidad = () => {
-        setCantProduct(cantProduct + 1)
-    }
-    const restarCantidad = () => {
-        if(cantProduct > 1) {
-            setCantProduct(cantProduct - 1)
-        }
-    }
+    const { cantProduct, sumarCantidad, restarCantidad, addCard } = useCard()
 
     const handleAddProductToCart = ( product, cantProduct ) => {
         addCard(product , cantProduct )
@@ -45,7 +34,7 @@ const DetailProductComponent = ( { product, goBack } ) => {
 
                         <div className='w-full flex flex-col justify-start items-center'>
                             <div className='w-full flex justify-start items-center'>
-                            <h1 className='text-xl font-bold'>$ { product.price - ((product.price * product.discount) / 100) } </h1>
+                            <h1 className='text-xl' >$ { product.price - ((product.price * product.discount) / 100) } </h1>
                             <div className='ml-4 bg-cyan-400 px-2 rounded-lg'>
                                 <span className='text-white'>
                                 { product.discount }%
@@ -56,7 +45,7 @@ const DetailProductComponent = ( { product, goBack } ) => {
                         </div>
                         :
                         <div className='w-full flex justify-start items-center h-12'>
-                            <h1 className='text-xl font-bold' >$ { product.price } </h1>
+                            <h1 className='text-xl' >$ { product.price } </h1>
                         </div>
                     }
                     <div className="w-full flex justify-center items-center mt-8">
@@ -66,10 +55,7 @@ const DetailProductComponent = ( { product, goBack } ) => {
                             <button onClick={ sumarCantidad } className="w-1/3 ml-2 border-[#2c3e50] rounded-xl border-2 p-2 hover:bg-cyan-200 hover:text-black">+</button>
                         </div> 
                         <div className="w-1/2 md:w-2/3 flex justify-center items-center">
-                            <ButtonComponent 
-                                text='Add to Cart' 
-                                handleFunction={() => handleAddProductToCart(product, cantProduct)} 
-                            />
+                            <button onClick={ () => handleAddProductToCart( product, cantProduct ) } className="w-full lg:w-2/3 p-2 bg-cyan-200 rounded-xl text-black font-bold uppercase">Add to cart</button>
                         </div>
                     </div>
                 </div>

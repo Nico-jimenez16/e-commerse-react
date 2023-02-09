@@ -2,9 +2,6 @@ import React from 'react';
 import '../../styles/title.css'
 import Lineup from '../../components/pure/Lineup';
 import ContactForm from '../../components/pure/forms/ContactForm';
-import ButtonComponent from '../../components/pure/Button';
-
-// Hooks 
 import { useRedirect } from '../../hooks/useRedirect'
 
 const bannerHome = require('../../assets/banner-technology.webp')
@@ -27,12 +24,7 @@ const HomePage = () => {
           <img className='w-full h-full object-fill' src={ bannerHome } alt="Banner Home page" />
           <div className='absolute w-full h-full flex flex-col justify-center items-start p-2 md:p-8'>
             <span className='text-5xl text-white md:text-7xl style-title'>N-VOTF</span>
-            <div className='w-4/6 sm:w-3/6 md:w-3/6 lg:w-1/5'>
-              <ButtonComponent 
-                text='Explore Products' 
-                handleFunction={goProduct} 
-              />
-            </div>
+            <button onClick={ goProduct } className='text-xl md:text-2xl text-white font-bold bg-blue-800 hover:bg-blue-700 p-1 md:p-2 mt-1 md:mt-2 uppercase'> Explore Products </button>
           </div>
         </div>
         <div className='w-full h-auto flex flex-col justify-center items-center p-4'>
