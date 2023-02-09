@@ -22,6 +22,7 @@ export const loginUser = async ( User ) => {
 
     if(match) return match[0]
 }
+
 // ! registrar un usuario a la API
 export const registerUser = async (User) => {
   return await axios.post(ApiUser, User)

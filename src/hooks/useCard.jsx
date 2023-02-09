@@ -1,9 +1,20 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import contextCard  from '../context/CardContext.js';
 
 export function useCard() {
 
     const { priceTotal, setPriceTotal , priceFinal , setPriceFinal , products , setProducts } = useContext(contextCard)
+    const [cantProduct, setCantProduct] = useState(1)
+
+    const sumarCantidad = () => {
+        setCantProduct(() => cantProduct + 1 )
+    }
+
+    const restarCantidad = () => {
+        if(cantProduct > 1) {
+            setCantProduct(() => cantProduct - 1 )
+        }
+    }
 
     // ! Funcion para calcular el precio sub total de la compra 
     const calculateSubTotalPrice = () => {
@@ -30,9 +41,9 @@ export function useCard() {
             )
         })
     }
+
     calculateSubTotalPrice()
     calculateTotalPrice()
-    
 
     // ! Funcion que agrega un producto en el Carrito
     const addCard = (product , quantity) => {
@@ -86,13 +97,11 @@ export function useCard() {
         const product = products.find(product => product.id === id )
         if(product.quantityInCard > 1){
             product.quantityInCard = product.quantityInCard - 1
-            calculateSubTotalPrice()
-        calculateTotalPrice()
         }else{
             removeProduct(id)
-            calculateSubTotalPrice()
-            calculateTotalPrice()
         }
+        calculateSubTotalPrice()
+        calculateTotalPrice()
     }
 
     const clearCart = () => {
@@ -105,13 +114,16 @@ export function useCard() {
         products,
         priceTotal,
         priceFinal,
+        cantProduct,
 
         // ? funciones 
         addCard,
         removeProduct,
         sumarCantProductInCart,
         restarCantProductInCart,
-        clearCart
+        clearCart,
+        sumarCantidad, 
+        restarCantidad
     }
 }
 
