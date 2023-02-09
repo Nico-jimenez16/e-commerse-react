@@ -1,7 +1,8 @@
 import React , { useState , useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import ProductComponent from '../../components/pure/Product';
-import Loader from '../../components/pure/Loader'
+import Loader from '../../components/pure/Loader';
+import ButtonComponent from '../../components/pure/Button';
 
 import { useServiceProducts } from '../../hooks/useServiceProducts';
 
@@ -13,18 +14,20 @@ const bannerSmartwatch = require('../../assets/bannerSmartwatch.webp')
 
 const CategorieProductPage = () => {
     
+    // STATE
+    const [product, setProduct] = useState([])
+    // PARAMS
     const { categorie } = useParams()
+    // CUMTOM HOOKS
     const { status ,  searchProductCategorie } = useServiceProducts()
     
-    // ? Producto con id 
-    const [product, setProduct] = useState([])
     
     useEffect(() => {
         const response = searchProductCategorie( categorie )
         setProduct(response)
-        
+
     // eslint-disable-next-line
-    }, [status , categorie])
+    },[status])
 
     
     const banner = () => {
@@ -53,8 +56,10 @@ const CategorieProductPage = () => {
             { !status &&
                 <Loader/>
             }
-            <Link to={'/products'} className='w-full h-12 flex justify-end items-end pr-4 md:pr-8 text-cyan-600'>
-                <h2 className='underline text-lg'> {'view all products'} </h2>
+            <Link to={'/products'} className='w-full md:w-1/3 lg:w-1/4 xl:w-1/5 ml-8 mt-4 flex justify-center items-center'>
+                <ButtonComponent 
+                    text='view all products' 
+                />
             </Link>
             <div className='w-full p-4 md:px-8 md:py-4'>
                 { status &&

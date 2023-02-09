@@ -17,7 +17,7 @@ export function NotificationContextProvider ({ children }){
       return () => clearTimeout(time)
     }, [showNotification])
 
-    const notificationHandler = (args) =>{
+    const notify = (args) =>{
         setType(args.type)
         setMessage(args.message)
         setShowNotification(true)
@@ -25,7 +25,7 @@ export function NotificationContextProvider ({ children }){
 
     return (
         
-        <contextNotification.Provider value={{ notificationHandler , showNotification , type , message }}>
+        <contextNotification.Provider value={{ notify , showNotification , type , message }}>
             { children }    
         </contextNotification.Provider>
     )

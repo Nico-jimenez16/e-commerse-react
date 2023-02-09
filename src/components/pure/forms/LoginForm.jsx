@@ -5,10 +5,14 @@ import * as yup from 'yup';
 
 // ! importando los sevicios HTTP 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import {loginUser} from '../../../services/data.js';
 =======
 import Servicios from '../../../services/data.js';
 >>>>>>> e0d5a6b27d4a7a60888a452b524c0cfa394eb522
+=======
+import { loginUser } from '../../../services/data.js';
+>>>>>>> parent of e0d5a6b (Revert "nejoras de codigo, agregue button component")
 
 // ! importando hooks
 import { useServiceUser } from '../../../hooks/useServiceUsers';
@@ -27,7 +31,7 @@ const loginSchema = yup.object().shape(
 const LoginFormComponent = () => {
 
     const { logged } = useServiceUser()
-    const { notificationHandler } = useContext(contextNotification)
+    const { notify } = useContext(contextNotification)
 
     const initialCredentials = {
         email: '',
@@ -37,18 +41,22 @@ const LoginFormComponent = () => {
     const userLogin = async ( User ) => {
         try {
 <<<<<<< HEAD
+<<<<<<< HEAD
             const response = await loginUser( User )
 =======
             const response = await Servicios.loginUser( User )
 >>>>>>> e0d5a6b27d4a7a60888a452b524c0cfa394eb522
+=======
+            const response = await loginUser(User)
+>>>>>>> parent of e0d5a6b (Revert "nejoras de codigo, agregue button component")
             if(response){
                 logged(response)
-                handler({ type:'success' , message:'successful login'})
+                handlerNotification({ type:'success' , message:'successful login'})
                 window.localStorage.setItem(
                     'logguedUser', JSON.stringify(response)
                 )
             }else{
-                handler({ type:'error' , message:'User could not be found'})
+                handlerNotification({ type:'error' , message:'User could not be found'})
             }
         } catch (err) {
             console.error(err)
@@ -56,8 +64,8 @@ const LoginFormComponent = () => {
         
     }
 
-    const handler = (args) => {
-        notificationHandler({
+    const handlerNotification = (args) => {
+        notify({
             type: args.type,
             message: args.message
         })
@@ -98,7 +106,7 @@ const LoginFormComponent = () => {
                             )
                         }
                         <button className='mt-4 p-1 bg-[#54b4d3] text-white hover:shadow-lg rounded-lg' type="submit"> Login </button>
-                        { isSubmitting ? ( <p>Login yur credentials</p> ) : null}
+                        { isSubmitting ? ( <p>Login your credentials</p> ) : null}
                         <Link to={'/register'} className='w-full flex justify-end items-center text-gray-400 mt-4 cursor-pointer' >create an account</Link>
                     </Form>
                 )

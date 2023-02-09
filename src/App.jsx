@@ -1,15 +1,15 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 
-// ! import componentes 
+// import componentes 
 import Header from './components/pure/Header';
 import Footer from './components/pure/Footer';
-import ConfirmationComponent from './components/pure/notifications/confirmation';
+import ConfirmationComponent from './components/pure/notifications/Confirmation';
 
-// ! import styles 
+// import styles 
 import './App.css';
 
-// ! importando los contextos 
+// importando los contextos
 import { ProductsContextProvider } from './context/ProductsContext';
 import { CardContextProvider } from './context/CardContext';
 import { UserContextProvider } from './context/UserContext';
@@ -20,6 +20,7 @@ const App = () => {
 
   return (
     <>
+    
       {/* Contextos para variables globales  */}
       <ProductsContextProvider>
         <CardContextProvider>

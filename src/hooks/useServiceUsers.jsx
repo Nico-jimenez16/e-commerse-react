@@ -1,13 +1,13 @@
 import { useContext, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'
+import { useRedirect } from './useRedirect'
 
 // ? importando context
 import contextUser from '../context/UserContext';
 
 export function useServiceUser() {
 
+    const { goToPage } = useRedirect()
     const { status , setStatus , loggedUser , setLoggedUser } = useContext(contextUser)
-    const navigate = useNavigate()
 
 
     useEffect(() => {
@@ -22,7 +22,7 @@ export function useServiceUser() {
 
 
     const goHome = () => {
-        navigate('/')
+        goToPage('/')
     }
 
     const logged = (user) => {
@@ -39,12 +39,12 @@ export function useServiceUser() {
     }
 
     return {
-            status ,
-            loggedUser,
+        status ,
+        loggedUser,
 
-            // ? functions 
-            logged,
-            unlogged
+        // ? functions 
+        logged,
+        unlogged
     }
 }
 
