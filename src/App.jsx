@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom';
 // ! import componentes 
 import Header from './components/pure/Header';
 import Footer from './components/pure/Footer';
-import ConfirmationComponent from './components/pure/notifications/confirmation';
+import ConfirmationComponent from './components/pure/notifications/Confirmation';
 
 // ! import styles 
 import './App.css';

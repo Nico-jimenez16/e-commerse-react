@@ -5,11 +5,7 @@ import * as yup from 'yup';
 import { useRedirect } from '../../../hooks/useRedirect';
 
 // ! importando los sevicios HTTP 
-<<<<<<< HEAD
 import {registerUser} from '../../../services/data.js'
-=======
-import Servicios from '../../../services/data.js'
->>>>>>> e0d5a6b27d4a7a60888a452b524c0cfa394eb522
 import contextNotification from '../../../context/NotificationContext.js';
 
 
@@ -51,8 +47,8 @@ const RegisterFormComponent = () => {
         })
     }
 
-    const registerUser = async ( user ) => {
-        const { status } = await Servicios.registerUser(user)
+    const handleRegisterUser = async ( user ) => {
+        const { status } = await registerUser(user)
             if(status === 200){
                 goLogin()
                 handler({ type:'success' , message:'successful registration'})
@@ -67,7 +63,7 @@ const RegisterFormComponent = () => {
             <Formik
                 initialValues={ initialValues }
                 validationSchema = { registerSchema }
-                onSubmit={async (values) => { registerUser(values) }}
+                onSubmit={async (values) => { handleRegisterUser(values) }}
             >
             {
                 ({ errors, touched , isSubmitting }) => (
