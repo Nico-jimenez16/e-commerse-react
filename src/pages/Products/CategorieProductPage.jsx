@@ -51,12 +51,12 @@ const CategorieProductPage = () => {
                 <img className='w-full h-full object-contain p-2' src={ banner() } alt="" />
             </div>
             <div className='w-full h-16 flex justify-center items-center p-2 bg-cyan-200'>
-                <h1 className='text-xl text-black font-bold'> { categorie } </h1>
+                <h1 className='text-xl text-black font-bold uppercase'> { categorie } </h1>
             </div>
             { !status &&
                 <Loader/>
             }
-            <Link to={'/products'} className='w-full md:w-1/3 lg:w-1/4 xl:w-1/5 ml-8 mt-4 flex justify-center items-center'>
+            <Link to={'/products'} className='w-full md:w-1/3 lg:w-1/4 xl:w-1/5 px-2 sm:px-0 md:ml-8 mt-4 flex justify-center items-center'>
                 <ButtonComponent 
                     text='view all products' 
                 />
