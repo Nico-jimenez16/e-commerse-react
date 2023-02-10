@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import contextNotification from '../../../context/NotificationContext';
 
-const ConfirmationComponent = () => {
+const ConfirmationsComponent = () => {
 
   const { showNotification , type , message } = useContext(contextNotification)
 
@@ -21,10 +21,10 @@ const ConfirmationComponent = () => {
   )
 }
 
-ConfirmationComponent.propTypes = {
-  showNotification: PropTypes.bool,
-  type: PropTypes.string,
-  message: PropTypes.string
+ConfirmationsComponent.propTypes = {
+  showNotification: PropTypes.bool.isRequired,
+  type: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired
 }
 
-export default ConfirmationComponent;
+export default ConfirmationsComponent;

@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom';
 // import componentes 
 import Header from './components/pure/Header';
 import Footer from './components/pure/Footer';
-import ConfirmationComponent from './components/pure/notifications/Confirmation';
+import ConfirmationsComponent from './components/pure/notifications/Confirmations';
 
 // import styles 
 import './App.css';
@@ -30,7 +30,7 @@ const App = () => {
           <main className='mt-16'>
             <NotificationContextProvider>
               <Outlet/>
-              <ConfirmationComponent/>
+              <ConfirmationsComponent/>
             </NotificationContextProvider>
           </main>
           {/* footer de la aplicacion  */}
