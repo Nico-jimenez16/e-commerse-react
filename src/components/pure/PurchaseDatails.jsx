@@ -5,21 +5,34 @@ import ButtonComponent from "./Button";
 import { useCard } from '../../hooks/useCard';
 import { useRedirect } from '../../hooks/useRedirect';
 
+// importando context 
+import contextUser from '../../context/UserContext';
 import contextCard from "../../context/CardContext";
+import contextNotification from '../../context/NotificationContext.js'
 
 const PurchaseDetails = () => {
 
+  const { status } = useContext(contextUser)
+  const { notify } = useContext(contextNotification)
   const { priceFinal, priceTotal } = useContext(contextCard)
   const { clearCart } = useCard()
   const { goToPage } = useRedirect()
 
-  function goProducts(){
+  const goProducts = () => {
     goToPage('/products')
   }
 
-  function goThankYou(){
-    clearCart()
-    goToPage('/thankyou')
+  const goThankYou = () => {
+    if(status){
+      clearCart()
+      goToPage('/thankyou')
+    }else{
+      notify({
+        type:'alert',
+        message:'log in to complete your purchase'
+      })
+      goToPage('/login')
+    }
   }
 
   return (

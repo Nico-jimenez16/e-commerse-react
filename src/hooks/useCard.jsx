@@ -1,9 +1,22 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import contextCard  from '../context/CardContext.js';
+
+import { useRedirect } from './useRedirect'
 
 export function useCard() {
 
+    const { goToPage } = useRedirect()
     const { priceTotal, setPriceTotal , priceFinal , setPriceFinal , products , setProducts } = useContext(contextCard)
+
+    const [cantProduct, setCantProduct] = useState(1)
+    const sumarCantidad = () => {
+        setCantProduct(cantProduct => cantProduct + 1)
+    }
+    const restarCantidad = () => {
+        if(cantProduct > 1) {
+            setCantProduct(cantProduct => cantProduct - 1)
+        }
+    }
 
     // ! Funcion para calcular el precio sub total de la compra 
     const calculateSubTotalPrice = () => {
@@ -35,13 +48,13 @@ export function useCard() {
     
 
     // ! Funcion que agrega un producto en el Carrito
-    const addCard = (product , quantity) => {
+    const addCard = (product) => {
         const matching = products.find( p => p.id === product.id )
         const notMatching = products.filter( p => p.id !== product.id )
         if( matching ){
             const cardProduct = {
                 ...matching,
-                "quantityInCard": matching.quantityInCard + quantity
+                "quantityInCard": matching.quantityInCard + cantProduct
                 
             }
             const tempProduct = [ ...notMatching ]
@@ -50,13 +63,14 @@ export function useCard() {
         }else {
             const cardProduct = {
                 ...product,
-                "quantityInCard": quantity
+                "quantityInCard": cantProduct
                 
             }
             const tempProduct = [ ...products ]
             tempProduct.push( cardProduct)
             setProducts( tempProduct )
         }
+        goToPage(-1)
     }
 
     // ! Funcion que elimina un producto del Carrito
@@ -105,13 +119,16 @@ export function useCard() {
         products,
         priceTotal,
         priceFinal,
+        cantProduct,
 
         // ? funciones 
         addCard,
         removeProduct,
         sumarCantProductInCart,
         restarCantProductInCart,
-        clearCart
+        clearCart,
+        sumarCantidad,
+        restarCantidad
     }
 }
 

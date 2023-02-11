@@ -3,15 +3,19 @@ import axios from 'axios'
 const ApiProducts = 'https://backend-e-commerce-react.onrender.com/api/products';
 const ApiUser = 'https://backend-e-commerce-react.onrender.com/api/users';
 
-// ! Obtiener productos de la API
+// Obtiener productos
 export const getProducts = async () => {
   return await axios.get(ApiProducts)
 }
-// ! Obtiener Usuarios de la API
+// Obtiener productos por ID
+export const getProductPorId = async (id) => {
+  return await axios.get(`ApiProducts/${id}`)
+}
+// Obtiener Usuarios
 export const getUsers = async () => {
   return await axios.get(ApiUser)
 }
-// ! Loguar un usuario
+// Loguar un usuario
 export const loginUser = async ( User ) => {
   const { email , password } = User
 
@@ -22,8 +26,7 @@ export const loginUser = async ( User ) => {
 
     if(match) return match[0]
 }
-
-// ! registrar un usuario a la API
+// registrar un usuario
 export const registerUser = async (User) => {
   return await axios.post(ApiUser, User)
 

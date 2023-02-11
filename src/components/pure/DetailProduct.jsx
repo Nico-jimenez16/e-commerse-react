@@ -1,28 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import ButtonComponent from './Button';
 
 // impotando Hooks
 import { useCard } from '../../hooks/useCard';
 
-const DetailProductComponent = ( { product, goBack } ) => {
+const DetailProductComponent = ( { product } ) => {
 
-    const { addCard } = useCard()
-
-    const [cantProduct, setCantProduct] = useState(1)
-    const sumarCantidad = () => {
-        setCantProduct(cantProduct + 1)
-    }
-    const restarCantidad = () => {
-        if(cantProduct > 1) {
-            setCantProduct(cantProduct - 1)
-        }
-    }
-
-    const handleAddProductToCart = ( product, cantProduct ) => {
-        addCard(product , cantProduct )
-        goBack(-1)
-    }
+    const { addCard, sumarCantidad, restarCantidad, cantProduct } = useCard()
 
     return (
         <>
@@ -61,14 +46,14 @@ const DetailProductComponent = ( { product, goBack } ) => {
                     }
                     <div className="w-full flex justify-center items-center mt-8">
                         <div className="w-1/2 md:w-1/3 flex justify-center items-center text-black font-bold p-2" >
-                            <button onClick={ restarCantidad } className="w-1/3 mr-2 border-[#2c3e50] rounded-xl border-2 p-2 hover:bg-cyan-200 hover:text-black">-</button>
+                            <button onClick={restarCantidad} className="w-1/3 mr-2 border-[#2c3e50] rounded-xl border-2 p-2 hover:bg-cyan-200 hover:text-black">-</button>
                             <input disabled className="w-1/3 p-2 border-[#2c3e50] rounded-xl border-2" min="1" type="number" value={ cantProduct } />
-                            <button onClick={ sumarCantidad } className="w-1/3 ml-2 border-[#2c3e50] rounded-xl border-2 p-2 hover:bg-cyan-200 hover:text-black">+</button>
+                            <button onClick={sumarCantidad} className="w-1/3 ml-2 border-[#2c3e50] rounded-xl border-2 p-2 hover:bg-cyan-200 hover:text-black">+</button>
                         </div> 
                         <div className="w-1/2 md:w-2/3 flex justify-center items-center">
                             <ButtonComponent 
                                 text='Add to Cart' 
-                                handleFunction={() => handleAddProductToCart(product, cantProduct)} 
+                                handleFunction={() => addCard(product)}
                             />
                         </div>
                     </div>
@@ -91,7 +76,6 @@ const DetailProductComponent = ( { product, goBack } ) => {
 
 DetailProductComponent.propTypes = {
     product: PropTypes.object.isRequired,
-    goBack: PropTypes.func.isRequired
-  }
+}
 
 export default DetailProductComponent;

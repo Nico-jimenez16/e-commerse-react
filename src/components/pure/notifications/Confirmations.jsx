@@ -7,6 +7,7 @@ const ConfirmationsComponent = () => {
 
   const { showNotification , type , message } = useContext(contextNotification)
 
+
   return (
     <>
       {showNotification && 
@@ -22,9 +23,9 @@ const ConfirmationsComponent = () => {
 }
 
 ConfirmationsComponent.propTypes = {
-  showNotification: PropTypes.bool.isRequired,
-  type: PropTypes.string.isRequired,
-  message: PropTypes.string.isRequired
+  showNotification: PropTypes.bool,
+  type: PropTypes.string,
+  message: PropTypes.string
 }
 
 export default ConfirmationsComponent;
