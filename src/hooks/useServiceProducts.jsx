@@ -30,7 +30,6 @@ export function useServiceProducts(id) {
 
   // ! Funcion para encontrar los producto de un categoria especifica - categoriaProductPage - LineUp
   const searchProductId = useCallback(() => {
-    console.log('Ejecutando - searchProductId')
     if(status){
       const product = products.find((product) => product.id === id )
       setProduct(product)

@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+import { AiFillDelete } from "react-icons/ai";
+
 // importando hooks 
 import { useCard } from '../../hooks/useCard';
 
@@ -24,8 +26,11 @@ console.log("🚀 ~ file: Card.jsx:9 ~ CardComponent ~ product", product)
             <div className='w-1/3 h-full flex justify-center items-center'><span> { product.quantityInCard } </span></div>
             <div onClick={() => sumarCantProductInCart(product.id) } className='w-1/3 h-full flex justify-start md:justify-center items-center'><span className='rounded-full h-1/2 flex items-center border border-black p-3 cursor-pointer'> + </span></div>
           </div>
-          <div className='w-full md:w-1/5 lg:w-1/6 h-full flex justify-center items-center'> 
-            <button onClick={() => removeProduct(product.id)} className='w-full text-white bg-red-700 md:text-cyan-600 md:bg-transparent p-2'> Delete </button>
+          <div onClick={() => removeProduct(product.id)} className='w-full md:w-1/5 lg:w-1/6 h-full flex justify-center items-center'>
+            <div className='w-1/2 h-1/2 flex justify-center items-center hover:border hover:border-red-300 transition'>
+              <AiFillDelete />
+            </div>
+            {/* <button className='w-full text-white bg-red-700 md:text-cyan-600 md:bg-transparent p-2'> Delete </button> */}
           </div>
       </div>
     </>
